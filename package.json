@@ -4,5 +4,20 @@
   "main": "index.js",
   "repository": "https://github.com/burczu/appunite-recruitment-app.git",
   "author": "Bartek Dybowski <bartlomiej.dybowski@goingapp.pl>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.6.2",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "scripts": {
+    "build": "webpack"
+  }
 }

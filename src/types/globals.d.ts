@@ -12,3 +12,8 @@ declare interface NodeModule {
     accept: (path?: string, callback?: any) => void;
   };
 }
+
+declare module '*.module.scss' {
+  const classes: { [key: string]: string };
+  export default classes;
+}

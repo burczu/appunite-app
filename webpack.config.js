@@ -5,6 +5,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const prepareAliases = require('./utils/functions').prepareAliases;
 const paths = require('./utils/paths');
 
+const cssRegex = /\.css$/;
+const scssModuleRegex = /\.module\.scss$/;
+
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-inline-source-map',
@@ -28,14 +31,46 @@ module.exports = {
       { test: /\.tsx?$/, enforce: 'pre', loader: 'tslint-loader' },
       { test: /\.tsx?$/, loader: 'ts-loader' },
       {
-        test: /\.s[ac]ss$/i,
+        test: scssModuleRegex,
         use: [
-          'style-loader',
+          require.resolve('css-hot-loader'),
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 2,
+              localsConvention: 'camelCase',
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+                context: path.resolve(__dirname, 'src'),
+              },
+              sourceMap: true,
+            }
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              sourceMap: true,
+            },
+          },
           'sass-loader',
         ],
       },
+      {
+        test: cssRegex,
+        use: [
+          require.resolve('css-hot-loader'),
+          MiniCssExtractPlugin.loader,
+          require.resolve('css-loader'),
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      }
     ],
   },
   plugins: [

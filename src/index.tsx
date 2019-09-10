@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import { render } from 'react-dom';
 
-ReactDOM.render(
+render(
     <div>It's alive!</div>,
     document.getElementById('root') as HTMLElement,
 );

@@ -10,7 +10,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
-    "noEmit": true,
+    "noEmit": false,
     "paths": {
       "@/*": ["src/*"],
       "@Compo/*": ["src/components/*"],

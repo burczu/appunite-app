@@ -1,8 +1,9 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    devtool: "inline-source-map",
+    devtool: "cheap-module-inline-source-map",
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
     },
@@ -19,4 +20,7 @@ module.exports = {
             { test: /\.tsx?$/, loader: "ts-loader" },
         ],
     },
+    plugins: [
+        new HtmlWebpackPlugin(),
+    ]
 };

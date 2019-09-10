@@ -1,0 +1,13 @@
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "rules": {
+    "interface-name": [true, "always-prefix"],
+    "no-duplicate-imports": true,
+    "no-namespace": false,
+    "no-shadowed-variable": true,
+    "object-literal-sort-keys": true,
+    "variable-name": false,
+    "switch-default": true,
+    "trailing-comma": [true, { "multiline": "always", "singleline": "never" }]
+  }
+}

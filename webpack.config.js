@@ -2,6 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const prepareAliases = require('./utils/functions').prepareAliases;
+const paths = require('./utils/paths');
+
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-inline-source-map',
@@ -17,6 +20,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+    alias: prepareAliases(paths.aliases),
   },
   module: {
     rules: [

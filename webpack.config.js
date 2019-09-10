@@ -10,6 +10,7 @@ module.exports = {
   devtool: 'cheap-module-inline-source-map',
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
+    hot: true,
   },
   entry: {
     bundle: './src/index.tsx',

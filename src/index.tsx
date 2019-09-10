@@ -13,3 +13,14 @@ render(
   </Provider>,
   document.getElementById('root') as HTMLElement,
 );
+
+if (process.env.NODE_ENV === 'development') {
+  if (module.hot) {
+    const callback = () => {
+      document.location.reload();
+    };
+
+    module.hot.accept('./components/App', callback);
+    module.hot.accept('./store/index.ts', callback);
+  }
+}

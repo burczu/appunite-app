@@ -6,7 +6,11 @@
   "author": "Bartek Dybowski <bartlomiej.dybowski@goingapp.pl>",
   "license": "MIT",
   "devDependencies": {
+    "css-loader": "^3.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
     "ts-loader": "^6.0.4",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",

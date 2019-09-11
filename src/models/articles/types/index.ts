@@ -2,8 +2,20 @@ import { ActionType, StateType } from 'typesafe-actions';
 import * as actions from './../actions';
 import reducer from './../reducer';
 
+export interface IArticleSource {
+  id: number | null;
+  name: string;
+}
+
 export interface IArticle {
-  id: number;
+  author: string;
+  content: string;
+  description: string;
+  url: string;
+  urlToImage: string;
+  publishedAt: string;
+  source: IArticleSource;
+  title: string;
 }
 
 export type IArticlesReducer = IArticle[];

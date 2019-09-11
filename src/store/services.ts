@@ -1,11 +1,14 @@
-import NewsApi from '@Services/$articles-api';
+import ArticlesApi from '@Services/$articles-api';
+import SourcesApi from '@Services/$sources-api';
 
 export interface IServices {
-  newsApi: typeof NewsApi;
+  articlesApi: typeof ArticlesApi;
+  sourcesApi: typeof SourcesApi;
 }
 
 const services: IServices = {
-  newsApi: NewsApi,
+  articlesApi: ArticlesApi,
+  sourcesApi: SourcesApi,
 };
 
 export default services;

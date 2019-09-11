@@ -4,6 +4,7 @@ import history from './history';
 
 // App reducers
 import articlesReducer from '@Model/articles/reducer';
+import sourcesReducer from '@Model/sources/reducer';
 
 const rootReducer = combineReducers({
   // Router
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
 
   // App reducers
   articles: articlesReducer,
+  sources: sourcesReducer,
 });
 
 export default rootReducer;

@@ -89,7 +89,7 @@
     ],
     "src/**/*.{ts,tsx}": [
       "yarn tslint",
-      "yarn test"
+      "jest --bail --findRelatedTests"
     ]
   }
 }

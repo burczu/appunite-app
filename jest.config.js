@@ -19,5 +19,6 @@ module.exports = {
     "^@Model/(.*)$": '<rootDir>/src/models/$1',
     "^@Services/(.*)$": '<rootDir>/src/services/$1',
     "^@Styles/(.*)$": '<rootDir>/src/styles/$1',
+    "\\.scss$": "identity-obj-proxy",
   }
 };

@@ -81,7 +81,7 @@ describe('NewsApi', () => {
 
     describe('when just getArticles called', () => {
       it('should fetch data without filters using everything endpoint', async () => {
-        const expectedUrl = `${config.api.baseUrl}/everything?apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&apiKey=${config.api.apiKey}`;
 
         await NewsApi.getArticles([], '', '', '');
 
@@ -94,7 +94,7 @@ describe('NewsApi', () => {
         const mockSources = ['test1', 'test2', 'test3'];
         const expectedUrl = `${
           config.api.baseUrl
-        }/everything?sources=${mockSources.join(',')}&apiKey=${
+        }/everything?q=apple&sources=${mockSources.join(',')}&apiKey=${
           config.api.apiKey
         }`;
 
@@ -110,7 +110,7 @@ describe('NewsApi', () => {
         const mockSortBy = 'test';
         const expectedUrl = `${
           config.api.baseUrl
-        }/everything?sources=${mockSources.join(
+        }/everything?q=apple&sources=${mockSources.join(
           ',',
         )}&sortBy=${mockSortBy}&apiKey=${config.api.apiKey}`;
 
@@ -128,7 +128,7 @@ describe('NewsApi', () => {
         const mockDateTo = 'test';
         const expectedUrl = `${
           config.api.baseUrl
-        }/everything?sources=${mockSources.join(
+        }/everything?q=apple&sources=${mockSources.join(
           ',',
         )}&sortBy=${mockSortBy}&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${
           config.api.apiKey
@@ -148,7 +148,7 @@ describe('NewsApi', () => {
     describe('when sortBy only provided', () => {
       it('should fetch data from everything endpoint with sortBy passed', async () => {
         const mockSortBy = 'test';
-        const expectedUrl = `${config.api.baseUrl}/everything?sortBy=${mockSortBy}&apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&sortBy=${mockSortBy}&apiKey=${config.api.apiKey}`;
 
         await NewsApi.getArticles([], mockSortBy, '', '');
 
@@ -161,7 +161,7 @@ describe('NewsApi', () => {
         const mockSortBy = 'test';
         const mockDateFrom = '2018-01-01';
         const mockDateTo = '2019-01-01';
-        const expectedUrl = `${config.api.baseUrl}/everything?sortBy=${mockSortBy}&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&sortBy=${mockSortBy}&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
 
         await NewsApi.getArticles([], mockSortBy, mockDateFrom, mockDateTo);
 
@@ -173,7 +173,7 @@ describe('NewsApi', () => {
       it('should fetch data from everything endpoint with dates passed', async () => {
         const mockDateFrom = '2018-01-01';
         const mockDateTo = '2019-01-01';
-        const expectedUrl = `${config.api.baseUrl}/everything?from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
 
         await NewsApi.getArticles([], '', mockDateFrom, mockDateTo);
 
@@ -184,7 +184,7 @@ describe('NewsApi', () => {
     describe('when dateFrom only provided', () => {
       it('should fetch data from everything endpoint without filters', async () => {
         const mockDateFrom = '2018-01-01';
-        const expectedUrl = `${config.api.baseUrl}/everything?apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&apiKey=${config.api.apiKey}`;
 
         await NewsApi.getArticles([], '', mockDateFrom, '');
 
@@ -195,7 +195,7 @@ describe('NewsApi', () => {
     describe('when dateTo only provided', () => {
       it('should fetch data from everything endpoint without filters', async () => {
         const mockDateTo = '2019-01-01';
-        const expectedUrl = `${config.api.baseUrl}/everything?apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&apiKey=${config.api.apiKey}`;
 
         await NewsApi.getArticles([], '', '', mockDateTo);
 
@@ -210,7 +210,7 @@ describe('NewsApi', () => {
         const mockDateTo = 'test';
         const expectedUrl = `${
           config.api.baseUrl
-        }/everything?sources=${mockSources.join(
+        }/everything?q=apple&sources=${mockSources.join(
           ',',
         )}&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
 

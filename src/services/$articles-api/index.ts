@@ -10,7 +10,9 @@ class ArticlesApi {
     dateFrom: string,
     dateTo: string,
   ): string {
-    let url = `${config.api.baseUrl}/everything?`;
+    // the "q" query parameter is one of the few required ones
+    // so it is hardcoded to make things easier...
+    let url = `${config.api.baseUrl}/everything?q=apple&`;
 
     if (sources.length > 0) {
       url += `sources=${sources.join(',')}&`;

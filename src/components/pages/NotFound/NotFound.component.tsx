@@ -1,7 +1,14 @@
 import React from 'react';
 
-const NotFound = () => {
-  return <div>404 - page not found</div>;
-};
+import Grid from '@Compo/layout/Grid';
+import PageWrapper from '@Compo/layout/PageWrapper';
+
+const NotFound = () => (
+  <Grid>
+    <PageWrapper>
+      <h1>404 - page not found</h1>
+    </PageWrapper>
+  </Grid>
+);
 
 export default NotFound;

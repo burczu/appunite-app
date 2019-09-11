@@ -7,6 +7,7 @@ import * as Sources from '@Model/sources/epics';
 /* @@STORE_COMPONENT@@ */
 export default combineEpics(
   // Articles
+  Articles.fetchArticlesWhenRequested,
   Articles.requestArticlesWhenLocationChangedToHome,
 
   // Sources

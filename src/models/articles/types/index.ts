@@ -3,7 +3,7 @@ import * as actions from './../actions';
 import reducer from './../reducer';
 
 export interface IArticleSource {
-  id: number | null;
+  id: string | null;
   name: string;
 }
 

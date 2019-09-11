@@ -18,6 +18,13 @@ export interface IArticle {
   title: string;
 }
 
+export interface IArticlesRequestPayload {
+  sources: string[];
+  sortBy: string;
+  dateFrom: string;
+  dateTo: string;
+}
+
 export type IArticlesReducer = IArticle[];
 
 export type IState = StateType<typeof reducer>;

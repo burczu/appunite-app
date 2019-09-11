@@ -12,7 +12,14 @@ export const requestArticlesWhenLocationChangedToHome: _Store.IEpic = (
     filter$(isOfType(LOCATION_CHANGE)),
     filter$((action) => action.payload.location.pathname === '/'),
     mergeMap$(() => {
-      return of$(getArticles.request());
+      return of$(
+        getArticles.request({
+          dateFrom: '',
+          dateTo: '',
+          sortBy: '',
+          sources: [],
+        }),
+      );
     }),
   );
 };

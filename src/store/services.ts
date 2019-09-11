@@ -1,4 +1,4 @@
-import NewsApi from '@Services/$news-api';
+import NewsApi from '@Services/$articles-api';
 
 export interface IServices {
   newsApi: typeof NewsApi;

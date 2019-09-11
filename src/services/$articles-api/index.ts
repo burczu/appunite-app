@@ -5,28 +5,23 @@ import { IArticlesResponse } from './types';
 
 class NewsApi {
   private static getUrl(
-    category: string,
+    sources: string[],
     sortBy: string,
     dateFrom: string,
     dateTo: string,
   ): string {
-    const everything = 'everything';
-    const topHeadlines = 'top-headlines';
+    let url = `${config.api.baseUrl}/everything?`;
 
-    let url = config.api.baseUrl;
+    if (sources.length > 0) {
+      url += `sources=${sources.join(',')}&`;
+    }
 
-    if (category !== '') {
-      url += `/${topHeadlines}?category=${category}&`;
-    } else {
-      url += `/${everything}?`;
+    if (sortBy !== '') {
+      url += `sortBy=${sortBy}&`;
+    }
 
-      if (sortBy !== '') {
-        url += `sortBy=${sortBy}&`;
-      }
-
-      if (dateFrom !== '' && dateTo !== '') {
-        url += `from=${dateFrom}&to=${dateTo}&`;
-      }
+    if (dateFrom !== '' && dateTo !== '') {
+      url += `from=${dateFrom}&to=${dateTo}&`;
     }
 
     url += `apiKey=${config.api.apiKey}`;
@@ -34,19 +29,19 @@ class NewsApi {
     return url;
   }
 
-  private cancelToken?: CancelTokenSource;
+  private cancelTokenArticles?: CancelTokenSource;
 
   public getArticles(
-    category: string,
+    sources: string[],
     sortBy: string,
     dateFrom: string,
     dateTo: string,
   ): Promise<IArticlesResponse> {
     return new Promise<IArticlesResponse>((resolve, reject) => {
-      this.cancelToken = axios.CancelToken.source();
+      this.cancelTokenArticles = axios.CancelToken.source();
 
       axios
-        .get(NewsApi.getUrl(category, sortBy, dateFrom, dateTo))
+        .get(NewsApi.getUrl(sources, sortBy, dateFrom, dateTo))
         .then(getData)
         .then((response: IArticlesResponse) => {
           resolve(response);
@@ -56,9 +51,9 @@ class NewsApi {
   }
 
   public cancelArticles() {
-    if (this.cancelToken) {
-      this.cancelToken.cancel();
-      this.cancelToken = undefined;
+    if (this.cancelTokenArticles) {
+      this.cancelTokenArticles.cancel();
+      this.cancelTokenArticles = undefined;
     }
   }
 }

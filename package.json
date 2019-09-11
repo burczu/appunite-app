@@ -69,10 +69,14 @@
     "build": "webpack",
     "csslint": "stylelint --fix ./src/**/*.scss",
     "start": "webpack-dev-server --open",
-    "precommit": "lint-staged",
     "prettier": "prettier --write \"src/**/*.{html,json,js,jsx,ts,tsx,css,scss}\"",
     "test": "jest",
     "tslint": "tslint 'src/**/*.ts' 'src/**/*.tsx'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "src/**/*.{html,json,js,jsx,ts,tsx,css,scss}": [
@@ -84,7 +88,8 @@
       "git add"
     ],
     "src/**/*.{ts,tsx}": [
-      "yarn tslint"
+      "yarn tslint",
+      "yarn test"
     ]
   }
 }

@@ -64,13 +64,27 @@ describe('NewsApi', () => {
     });
 
     describe('when just getArticles called', () => {
-      it('should fetch data without filters using everything endpoint', async () => {
-        const expectedUrl = `${config.api.baseUrl}/everything?apiKey=${config.api.apiKey}`;
-
+      it('should resolves correct data', async () => {
         const data = await NewsApi.getArticles([], '', '', '');
 
         expect(data).toEqual(mockData);
+      });
+    });
+
+    describe('when just getArticles called', () => {
+      it('should be called only once', async () => {
+        await NewsApi.getArticles([], '', '', '');
+
         expect(mockAxios.get).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe('when just getArticles called', () => {
+      it('should fetch data without filters using everything endpoint', async () => {
+        const expectedUrl = `${config.api.baseUrl}/everything?apiKey=${config.api.apiKey}`;
+
+        await NewsApi.getArticles([], '', '', '');
+
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
       });
     });
@@ -84,10 +98,8 @@ describe('NewsApi', () => {
           config.api.apiKey
         }`;
 
-        const data = await NewsApi.getArticles(mockSources, '', '', '');
+        await NewsApi.getArticles(mockSources, '', '', '');
 
-        expect(data).toEqual(mockData);
-        expect(mockAxios.get).toHaveBeenCalledTimes(1);
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
       });
     });
@@ -102,10 +114,8 @@ describe('NewsApi', () => {
           ',',
         )}&sortBy=${mockSortBy}&apiKey=${config.api.apiKey}`;
 
-        const data = await NewsApi.getArticles(mockSources, mockSortBy, '', '');
+        await NewsApi.getArticles(mockSources, mockSortBy, '', '');
 
-        expect(data).toEqual(mockData);
-        expect(mockAxios.get).toHaveBeenCalledTimes(1);
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
       });
     });
@@ -124,15 +134,13 @@ describe('NewsApi', () => {
           config.api.apiKey
         }`;
 
-        const data = await NewsApi.getArticles(
+        await NewsApi.getArticles(
           mockSources,
           mockSortBy,
           mockDateFrom,
           mockDateTo,
         );
 
-        expect(data).toEqual(mockData);
-        expect(mockAxios.get).toHaveBeenCalledTimes(1);
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
       });
     });
@@ -142,10 +150,8 @@ describe('NewsApi', () => {
         const mockSortBy = 'test';
         const expectedUrl = `${config.api.baseUrl}/everything?sortBy=${mockSortBy}&apiKey=${config.api.apiKey}`;
 
-        const data = await NewsApi.getArticles([], mockSortBy, '', '');
+        await NewsApi.getArticles([], mockSortBy, '', '');
 
-        expect(data).toEqual(mockData);
-        expect(mockAxios.get).toHaveBeenCalledTimes(1);
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
       });
     });
@@ -157,15 +163,8 @@ describe('NewsApi', () => {
         const mockDateTo = '2019-01-01';
         const expectedUrl = `${config.api.baseUrl}/everything?sortBy=${mockSortBy}&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
 
-        const data = await NewsApi.getArticles(
-          [],
-          mockSortBy,
-          mockDateFrom,
-          mockDateTo,
-        );
+        await NewsApi.getArticles([], mockSortBy, mockDateFrom, mockDateTo);
 
-        expect(data).toEqual(mockData);
-        expect(mockAxios.get).toHaveBeenCalledTimes(1);
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
       });
     });
@@ -176,15 +175,8 @@ describe('NewsApi', () => {
         const mockDateTo = '2019-01-01';
         const expectedUrl = `${config.api.baseUrl}/everything?from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
 
-        const data = await NewsApi.getArticles(
-          [],
-          '',
-          mockDateFrom,
-          mockDateTo,
-        );
+        await NewsApi.getArticles([], '', mockDateFrom, mockDateTo);
 
-        expect(data).toEqual(mockData);
-        expect(mockAxios.get).toHaveBeenCalledTimes(1);
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
       });
     });
@@ -194,10 +186,8 @@ describe('NewsApi', () => {
         const mockDateFrom = '2018-01-01';
         const expectedUrl = `${config.api.baseUrl}/everything?apiKey=${config.api.apiKey}`;
 
-        const data = await NewsApi.getArticles([], '', mockDateFrom, '');
+        await NewsApi.getArticles([], '', mockDateFrom, '');
 
-        expect(data).toEqual(mockData);
-        expect(mockAxios.get).toHaveBeenCalledTimes(1);
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
       });
     });
@@ -207,10 +197,8 @@ describe('NewsApi', () => {
         const mockDateTo = '2019-01-01';
         const expectedUrl = `${config.api.baseUrl}/everything?apiKey=${config.api.apiKey}`;
 
-        const data = await NewsApi.getArticles([], '', '', mockDateTo);
+        await NewsApi.getArticles([], '', '', mockDateTo);
 
-        expect(data).toEqual(mockData);
-        expect(mockAxios.get).toHaveBeenCalledTimes(1);
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
       });
     });
@@ -226,15 +214,8 @@ describe('NewsApi', () => {
           ',',
         )}&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
 
-        const data = await NewsApi.getArticles(
-          mockSources,
-          '',
-          mockDateFrom,
-          mockDateTo,
-        );
+        await NewsApi.getArticles(mockSources, '', mockDateFrom, mockDateTo);
 
-        expect(data).toEqual(mockData);
-        expect(mockAxios.get).toHaveBeenCalledTimes(1);
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
       });
     });

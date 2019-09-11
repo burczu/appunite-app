@@ -3,7 +3,7 @@ import getData from '@Misc/helpers/api/getData';
 import axios, { CancelTokenSource } from 'axios';
 import { IArticlesResponse } from './types';
 
-class NewsApi {
+class ArticlesApi {
   private static getUrl(
     sources: string[],
     sortBy: string,
@@ -41,7 +41,7 @@ class NewsApi {
       this.cancelTokenArticles = axios.CancelToken.source();
 
       axios
-        .get(NewsApi.getUrl(sources, sortBy, dateFrom, dateTo))
+        .get(ArticlesApi.getUrl(sources, sortBy, dateFrom, dateTo))
         .then(getData)
         .then((response: IArticlesResponse) => {
           resolve(response);
@@ -58,4 +58,4 @@ class NewsApi {
   }
 }
 
-export default new NewsApi();
+export default new ArticlesApi();

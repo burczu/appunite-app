@@ -2,7 +2,7 @@ import _Store from '@Store';
 import { Selector } from 'reselect';
 import { IArticlesReducer } from './../types';
 
-const get: Selector<_Store.IState, IArticlesReducer> = (state) =>
+const getArticles: Selector<_Store.IState, IArticlesReducer> = (state) =>
   state.articles.articles;
 
-export default get;
+export default getArticles;

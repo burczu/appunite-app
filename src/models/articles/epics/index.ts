@@ -91,7 +91,7 @@ export const fetchArticlesWhenRequested: _Store.IEpic = (
       const { dateTo, dateFrom, sortBy, sources } = action.payload;
 
       return from$(
-        articlesApi.getArticles(sources, sortBy, dateFrom, dateTo),
+        articlesApi.getArticles(sources, sortBy, dateFrom, dateTo, 1),
       ).pipe(
         map$((data: IArticlesResponse) => {
           return getArticles.success(data.articles);

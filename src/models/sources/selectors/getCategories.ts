@@ -15,7 +15,7 @@ const getCategories = createSelector<_Store.IState, ISourcesReducer, string[]>(
       );
 
       if (!found) {
-        result.push(`${category.charAt(0).toUpperCase()}${category.slice(1)}`);
+        result.push(category);
       }
     });
 

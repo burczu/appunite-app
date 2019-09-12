@@ -15,28 +15,27 @@ const sourceBase: ISource = {
 
 describe('getCategories selector', () => {
   it('should return correct categories list', () => {
-    const testCategories = ['test1', 'test2', 'test3'];
-    const expectedCategories = ['Test1', 'Test2', 'Test3'];
+    const expectedCategories = ['test1', 'test2', 'test3'];
     const mockedSources: ISourcesReducer = [
       {
         ...sourceBase,
-        category: testCategories[0],
+        category: expectedCategories[0],
       },
       {
         ...sourceBase,
-        category: testCategories[1],
+        category: expectedCategories[1],
       },
       {
         ...sourceBase,
-        category: testCategories[1],
+        category: expectedCategories[1],
       },
       {
         ...sourceBase,
-        category: testCategories[0],
+        category: expectedCategories[0],
       },
       {
         ...sourceBase,
-        category: testCategories[2],
+        category: expectedCategories[2],
       },
     ];
     const mockedState: StateType<typeof rootReducer> = {

@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { IFiltersReducer, IFiltersSortBy } from './../types';
 import get from './get';
 
-const getSelectedCategory = createSelector<
+const getSelectedSortBy = createSelector<
   _Store.IState,
   IFiltersReducer,
   IFiltersSortBy | undefined
@@ -12,4 +12,4 @@ const getSelectedCategory = createSelector<
   (filters) => filters.selectedSortBy,
 );
 
-export default getSelectedCategory;
+export default getSelectedSortBy;

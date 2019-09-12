@@ -12,7 +12,8 @@ export default combineEpics(
   Articles.requestArticlesWhenLocationChangedToHome,
 
   // Filters
-  Filters.setFiltersWhenSelected,
+  Filters.setCategoryWhenSelected,
+  Filters.setSortByWhenSelected,
 
   // Sources
   Sources.fetchSourcesWhenRequested,

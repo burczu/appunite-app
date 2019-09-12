@@ -1,4 +1,4 @@
-import { setFilter, setSortBy } from '@Model/filters/actions';
+import { setCategory, setSortBy } from '@Model/filters/actions';
 import { getType } from 'typesafe-actions';
 import { IAction, IFiltersReducer } from './../types';
 
@@ -12,7 +12,7 @@ const sourcesReducer = (
   action: IAction,
 ): IFiltersReducer => {
   switch (action.type) {
-    case getType(setFilter):
+    case getType(setCategory):
       return { ...state, selectedCategory: action.payload };
     case getType(setSortBy):
       return { ...state, selectedSortBy: action.payload };

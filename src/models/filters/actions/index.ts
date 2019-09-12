@@ -1,6 +1,6 @@
 import { createStandardAction } from 'typesafe-actions';
 import {
-  _SET_FILTER,
+  _SET_CATEGORY,
   _SET_SORT_BY,
   SET_CATEGORY_FILTER,
   SET_SORT_BY_FILTER,
@@ -15,7 +15,7 @@ export const setSortByFilter = createStandardAction(SET_SORT_BY_FILTER)<
   IFiltersSortBy
 >();
 
-export const setFilter = createStandardAction(_SET_FILTER)<
+export const setCategory = createStandardAction(_SET_CATEGORY)<
   string | undefined
 >();
 

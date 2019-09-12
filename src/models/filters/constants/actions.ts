@@ -1,5 +1,5 @@
 // Private action creators
-export const _SET_FILTER = 'NewsApp/filters/_SET_FILTER';
+export const _SET_CATEGORY = 'NewsApp/filters/_SET_CATEGORY';
 export const _SET_SORT_BY = 'NewsApp/filters/_SET_SORT_BY';
 
 // Public action creators

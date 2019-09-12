@@ -1,5 +1,5 @@
 import { ActionType } from 'typesafe-actions';
-import { setFilter, setSortBy } from './../actions';
+import { setCategory, setSortBy } from './../actions';
 import { RELEVANCY } from './../constants/constants';
 import { IFiltersReducer, IFiltersSortBy } from './../types';
 import reducer from './index';
@@ -17,7 +17,7 @@ describe('filtersReducer', () => {
   it('should handle SET_CATEGORY_FILTER', () => {
     const mockPayload: string = 'test';
 
-    expect(reducer(initialState, setFilter(mockPayload))).toEqual({
+    expect(reducer(initialState, setCategory(mockPayload))).toEqual({
       selectedCategory: mockPayload,
     });
   });

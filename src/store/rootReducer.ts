@@ -4,6 +4,7 @@ import history from './history';
 
 // App reducers
 import articlesReducer from '@Model/articles/reducer';
+import filtersReducer from '@Model/filters/reducer';
 import sourcesReducer from '@Model/sources/reducer';
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
 
   // App reducers
   articles: articlesReducer,
+  filters: filtersReducer,
   sources: sourcesReducer,
 });
 

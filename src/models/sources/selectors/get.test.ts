@@ -1,4 +1,5 @@
-import { RouterState } from 'connected-react-router';
+import rootReducer from '@/store/rootReducer';
+import { StateType } from 'typesafe-actions';
 import { ISourcesReducer } from './../types';
 import get from './get';
 
@@ -15,9 +16,21 @@ describe('get (sources) selector', () => {
         url: 'http://test.com',
       },
     ];
-    const mockedState = {
+
+    const mockedState: StateType<typeof rootReducer> = {
       articles: [],
-      router: {} as RouterState,
+      filters: {
+        selectedCategory: null,
+      },
+      router: {
+        action: 'REPLACE',
+        location: {
+          hash: '',
+          pathname: '/',
+          search: '',
+          state: null,
+        },
+      },
       sources: mockedSources,
     };
 

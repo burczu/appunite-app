@@ -15,6 +15,9 @@ describe('Routes', () => {
 
   const initialState: StateType<typeof rootReducer> = {
     articles: [],
+    filters: {
+      selectedCategory: null,
+    },
     router: {
       action: 'REPLACE',
       location: {

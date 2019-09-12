@@ -1,22 +1,7 @@
-@import '@Styles/defs/props.module.scss';
-
 .container {
   width: 100%;
 }
 
 .title {
   font-weight: normal;
-}
-
-.filters {
-  display: flex;
-  flex-direction: column;
-  margin-top: 3rem;
-}
-
-@media screen and (min-width: $screen_desktop) {
-  .filters {
-    flex-direction: row;
-    margin-top: 7rem;
-  }
 }

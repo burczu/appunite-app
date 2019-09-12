@@ -1,0 +1,14 @@
+@import '@Styles/defs/props.module.scss';
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: $screen_desktop) {
+  .filters {
+    flex-direction: row;
+    margin-top: 7rem;
+  }
+}

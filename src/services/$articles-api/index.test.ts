@@ -41,7 +41,7 @@ describe('NewsApi', () => {
 
     it('should catch and reject error', async () => {
       try {
-        await NewsApi.getArticles([], '', '', '');
+        await NewsApi.getArticles([], '', '', '', 1);
       } catch (error) {
         expect(error.message).toEqual(mockErrorMessage);
       }
@@ -65,7 +65,7 @@ describe('NewsApi', () => {
 
     describe('when just getArticles called', () => {
       it('should resolves correct data', async () => {
-        const data = await NewsApi.getArticles([], '', '', '');
+        const data = await NewsApi.getArticles([], '', '', '', 1);
 
         expect(data).toEqual(mockData);
       });
@@ -73,7 +73,7 @@ describe('NewsApi', () => {
 
     describe('when just getArticles called', () => {
       it('should be called only once', async () => {
-        await NewsApi.getArticles([], '', '', '');
+        await NewsApi.getArticles([], '', '', '', 1);
 
         expect(mockAxios.get).toHaveBeenCalledTimes(1);
       });
@@ -81,9 +81,9 @@ describe('NewsApi', () => {
 
     describe('when just getArticles called', () => {
       it('should fetch data without filters using everything endpoint', async () => {
-        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&pageSize=9&page=1&apiKey=${config.api.apiKey}`;
 
-        await NewsApi.getArticles([], '', '', '');
+        await NewsApi.getArticles([], '', '', '', 1);
 
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
           cancelToken: {},
@@ -96,11 +96,11 @@ describe('NewsApi', () => {
         const mockSources = ['test1', 'test2', 'test3'];
         const expectedUrl = `${
           config.api.baseUrl
-        }/everything?q=apple&sources=${mockSources.join(',')}&apiKey=${
-          config.api.apiKey
-        }`;
+        }/everything?q=apple&pageSize=9&page=1&sources=${mockSources.join(
+          ',',
+        )}&apiKey=${config.api.apiKey}`;
 
-        await NewsApi.getArticles(mockSources, '', '', '');
+        await NewsApi.getArticles(mockSources, '', '', '', 1);
 
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
           cancelToken: {},
@@ -114,11 +114,11 @@ describe('NewsApi', () => {
         const mockSortBy = 'test';
         const expectedUrl = `${
           config.api.baseUrl
-        }/everything?q=apple&sources=${mockSources.join(
+        }/everything?q=apple&pageSize=9&page=1&sources=${mockSources.join(
           ',',
         )}&sortBy=${mockSortBy}&apiKey=${config.api.apiKey}`;
 
-        await NewsApi.getArticles(mockSources, mockSortBy, '', '');
+        await NewsApi.getArticles(mockSources, mockSortBy, '', '', 1);
 
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
           cancelToken: {},
@@ -134,7 +134,7 @@ describe('NewsApi', () => {
         const mockDateTo = 'test';
         const expectedUrl = `${
           config.api.baseUrl
-        }/everything?q=apple&sources=${mockSources.join(
+        }/everything?q=apple&pageSize=9&page=1&sources=${mockSources.join(
           ',',
         )}&sortBy=${mockSortBy}&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${
           config.api.apiKey
@@ -145,6 +145,7 @@ describe('NewsApi', () => {
           mockSortBy,
           mockDateFrom,
           mockDateTo,
+          1,
         );
 
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
@@ -156,9 +157,9 @@ describe('NewsApi', () => {
     describe('when sortBy only provided', () => {
       it('should fetch data from everything endpoint with sortBy passed', async () => {
         const mockSortBy = 'test';
-        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&sortBy=${mockSortBy}&apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&pageSize=9&page=1&sortBy=${mockSortBy}&apiKey=${config.api.apiKey}`;
 
-        await NewsApi.getArticles([], mockSortBy, '', '');
+        await NewsApi.getArticles([], mockSortBy, '', '', 1);
 
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
           cancelToken: {},
@@ -171,9 +172,9 @@ describe('NewsApi', () => {
         const mockSortBy = 'test';
         const mockDateFrom = '2018-01-01';
         const mockDateTo = '2019-01-01';
-        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&sortBy=${mockSortBy}&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&pageSize=9&page=1&sortBy=${mockSortBy}&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
 
-        await NewsApi.getArticles([], mockSortBy, mockDateFrom, mockDateTo);
+        await NewsApi.getArticles([], mockSortBy, mockDateFrom, mockDateTo, 1);
 
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
           cancelToken: {},
@@ -185,9 +186,9 @@ describe('NewsApi', () => {
       it('should fetch data from everything endpoint with dates passed', async () => {
         const mockDateFrom = '2018-01-01';
         const mockDateTo = '2019-01-01';
-        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&pageSize=9&page=1&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
 
-        await NewsApi.getArticles([], '', mockDateFrom, mockDateTo);
+        await NewsApi.getArticles([], '', mockDateFrom, mockDateTo, 1);
 
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
           cancelToken: {},
@@ -198,9 +199,9 @@ describe('NewsApi', () => {
     describe('when dateFrom only provided', () => {
       it('should fetch data from everything endpoint without filters', async () => {
         const mockDateFrom = '2018-01-01';
-        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&pageSize=9&page=1&apiKey=${config.api.apiKey}`;
 
-        await NewsApi.getArticles([], '', mockDateFrom, '');
+        await NewsApi.getArticles([], '', mockDateFrom, '', 1);
 
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
           cancelToken: {},
@@ -211,9 +212,9 @@ describe('NewsApi', () => {
     describe('when dateTo only provided', () => {
       it('should fetch data from everything endpoint without filters', async () => {
         const mockDateTo = '2019-01-01';
-        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&apiKey=${config.api.apiKey}`;
+        const expectedUrl = `${config.api.baseUrl}/everything?q=apple&pageSize=9&page=1&apiKey=${config.api.apiKey}`;
 
-        await NewsApi.getArticles([], '', '', mockDateTo);
+        await NewsApi.getArticles([], '', '', mockDateTo, 1);
 
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
           cancelToken: {},
@@ -228,11 +229,11 @@ describe('NewsApi', () => {
         const mockDateTo = 'test';
         const expectedUrl = `${
           config.api.baseUrl
-        }/everything?q=apple&sources=${mockSources.join(
+        }/everything?q=apple&pageSize=9&page=1&sources=${mockSources.join(
           ',',
         )}&from=${mockDateFrom}&to=${mockDateTo}&apiKey=${config.api.apiKey}`;
 
-        await NewsApi.getArticles(mockSources, '', mockDateFrom, mockDateTo);
+        await NewsApi.getArticles(mockSources, '', mockDateFrom, mockDateTo, 1);
 
         expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
           cancelToken: {},

@@ -9,10 +9,11 @@ class ArticlesApi {
     sortBy: string,
     dateFrom: string,
     dateTo: string,
+    page: number,
   ): string {
     // the "q" query parameter is one of the few required ones
     // so it is hardcoded to make things easier...
-    let url = `${config.api.baseUrl}/everything?q=apple&`;
+    let url = `${config.api.baseUrl}/everything?q=apple&pageSize=9&page=${page}&`;
 
     if (sources.length > 0) {
       url += `sources=${sources.join(',')}&`;
@@ -38,12 +39,13 @@ class ArticlesApi {
     sortBy: string,
     dateFrom: string,
     dateTo: string,
+    page: number,
   ): Promise<IArticlesResponse> {
     return new Promise<IArticlesResponse>((resolve, reject) => {
       this.cancelTokenArticles = axios.CancelToken.source();
 
       axios
-        .get(ArticlesApi.getUrl(sources, sortBy, dateFrom, dateTo), {
+        .get(ArticlesApi.getUrl(sources, sortBy, dateFrom, dateTo, page), {
           cancelToken: this.cancelTokenArticles.token,
         })
         .then(getData)

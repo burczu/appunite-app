@@ -50,7 +50,10 @@ describe('articles epic', () => {
     ];
 
     return new StateObservable(new Subject(), {
-      articles: [],
+      articles: {
+        articles: [],
+        pagination: 1,
+      },
       filters: mockedFilters,
       router: {
         action: 'REPLACE',

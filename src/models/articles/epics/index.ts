@@ -1,4 +1,3 @@
-import { getPagination } from '@Model/articles/selectors';
 import {
   clearFilters,
   setCategory,
@@ -24,7 +23,8 @@ import {
   withLatestFrom as withLatestFrom$,
 } from 'rxjs/operators';
 import { isActionOf, isOfType } from 'typesafe-actions';
-import { getArticles } from './../actions';
+import { getArticles as getArticlesAction } from './../actions';
+import { getArticles, getPagination } from './../selectors';
 
 export const requestArticlesWhenLocationChangedToHome: _Store.IEpic = (
   action$,
@@ -34,7 +34,7 @@ export const requestArticlesWhenLocationChangedToHome: _Store.IEpic = (
     filter$((action) => action.payload.location.pathname === '/'),
     mergeMap$(() => {
       return of$(
-        getArticles.request({
+        getArticlesAction.request({
           dateFrom: '',
           dateTo: '',
           sortBy: '',
@@ -70,7 +70,7 @@ export const requestArticlesWhenFiltersChanged: _Store.IEpic = (
       }
 
       return of$(
-        getArticles.request({
+        getArticlesAction.request({
           dateFrom,
           dateTo,
           sortBy,
@@ -87,17 +87,18 @@ export const fetchArticlesWhenRequested: _Store.IEpic = (
   { articlesApi },
 ) => {
   return action$.pipe(
-    filter$(isActionOf(getArticles.request)),
+    filter$(isActionOf(getArticlesAction.request)),
     withLatestFrom$(state$),
     mergeMap$(([action, state]) => {
       const { dateTo, dateFrom, sortBy, sources } = action.payload;
+      const articles = getArticles(state);
       const page = getPagination(state);
 
       return from$(
         articlesApi.getArticles(sources, sortBy, dateFrom, dateTo, page),
       ).pipe(
         map$((data: IArticlesResponse) => {
-          return getArticles.success(data.articles);
+          return getArticlesAction.success([...articles, ...data.articles]);
         }),
         takeUntil$(
           action$.pipe(
@@ -105,7 +106,7 @@ export const fetchArticlesWhenRequested: _Store.IEpic = (
             tap$(() => articlesApi.cancelArticles()),
           ),
         ),
-        catchError$((error: Error) => of$(getArticles.failure(error))),
+        catchError$((error: Error) => of$(getArticlesAction.failure(error))),
       );
     }),
   );

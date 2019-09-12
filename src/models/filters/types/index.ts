@@ -10,4 +10,9 @@ export interface IFiltersReducer {
   selectedSortBy: IFiltersSortBy | undefined;
 }
 
+export interface IFiltersSelectedDateFormatted {
+  from: string;
+  to: string;
+}
+
 export type IAction = ActionType<typeof actions>;

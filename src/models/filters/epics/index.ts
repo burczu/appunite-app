@@ -7,7 +7,6 @@ import {
 } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import {
-  clearFilters,
   setCategory,
   setCategoryFilter,
   setDate,
@@ -67,16 +66,5 @@ export const setDateWhenSelected: _Store.IEpic = (action$, state$) => {
 
       return of$(setDate(dateString));
     }),
-  );
-};
-
-export const setFiltersWhenFiltersClear: _Store.IEpic = (action$) => {
-  return action$.pipe(
-    filter$(isActionOf(clearFilters)),
-    mergeMap$(() => [
-      setCategory(undefined),
-      setSortBy(undefined),
-      setDate(undefined),
-    ]),
   );
 };

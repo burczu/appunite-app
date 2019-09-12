@@ -1,4 +1,9 @@
-import { setCategory, setDate, setSortBy } from '@Model/filters/actions';
+import {
+  clearFilters,
+  setCategory,
+  setDate,
+  setSortBy,
+} from '@Model/filters/actions';
 import { getType } from 'typesafe-actions';
 import { IAction, IFiltersReducer } from './../types';
 
@@ -19,6 +24,8 @@ const sourcesReducer = (
       return { ...state, selectedSortBy: action.payload };
     case getType(setDate):
       return { ...state, selectedDate: action.payload };
+    case getType(clearFilters):
+      return initialState;
     default:
       return state;
   }

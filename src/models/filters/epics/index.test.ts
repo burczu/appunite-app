@@ -3,7 +3,6 @@ import { Subject } from 'rxjs';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/toArray';
 import {
-  clearFilters,
   setCategory,
   setCategoryFilter,
   setDate,
@@ -16,7 +15,6 @@ import { IFiltersReducer } from './../types';
 import {
   setCategoryWhenSelected,
   setDateWhenSelected,
-  setFiltersWhenFiltersClear,
   setSortByWhenSelected,
 } from './index';
 
@@ -76,42 +74,5 @@ describe('filters epic', () => {
       expect(action).toEqual(expected);
       done();
     });
-  });
-
-  it('should clear all the filters when expected', (done) => {
-    const filters: IFiltersReducer = {
-      selectedCategory: 'test',
-      selectedDate: TODAY,
-      selectedSortBy: RELEVANCY,
-    };
-
-    const newState$ = new StateObservable(new Subject(), {
-      articles: [],
-      filters,
-      router: {
-        action: 'REPLACE',
-        location: {
-          hash: '',
-          pathname: '/',
-          search: '',
-          state: null,
-        },
-      },
-      sources: [],
-    });
-
-    const action$ = ActionsObservable.of(clearFilters());
-
-    // @ts-ignore
-    setFiltersWhenFiltersClear(action$, newState$)
-      .take(3)
-      .toArray()
-      // @ts-ignore
-      .subscribe(([actionCategory, actionSortBy, actionDate]) => {
-        expect(actionCategory).toEqual(setCategory(undefined));
-        expect(actionSortBy).toEqual(setSortBy(undefined));
-        expect(actionDate).toEqual(setDate(undefined));
-        done();
-      });
   });
 });

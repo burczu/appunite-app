@@ -3,4 +3,7 @@ export { default as getAvailableDates } from './getAvailableDates';
 export { default as getAvailableSortBys } from './getAvailableSortBys';
 export { default as getSelectedCategory } from './getSelectedCategory';
 export { default as getSelectedDate } from './getSelectedDate';
+export {
+  default as getSelectedDateFormatted,
+} from './getSelectedDateFormatted';
 export { default as getSelectedSortBy } from './getSelectedSortBy';

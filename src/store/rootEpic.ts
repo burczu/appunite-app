@@ -9,12 +9,12 @@ import * as Sources from '@Model/sources/epics';
 export default combineEpics(
   // Articles
   Articles.fetchArticlesWhenRequested,
+  Articles.requestArticlesWhenFiltersChanged,
   Articles.requestArticlesWhenLocationChangedToHome,
 
   // Filters
   Filters.setCategoryWhenSelected,
   Filters.setDateWhenSelected,
-  Filters.setFiltersWhenFiltersClear,
   Filters.setSortByWhenSelected,
 
   // Sources

@@ -23,7 +23,11 @@ import {
   withLatestFrom as withLatestFrom$,
 } from 'rxjs/operators';
 import { isActionOf, isOfType } from 'typesafe-actions';
-import { getArticles as getArticlesAction } from './../actions';
+import {
+  getArticles as getArticlesAction,
+  getMore,
+  setPagination,
+} from './../actions';
 import { getArticles, getPagination } from './../selectors';
 
 export const requestArticlesWhenLocationChangedToHome: _Store.IEpic = (
@@ -50,7 +54,9 @@ export const requestArticlesWhenFiltersChanged: _Store.IEpic = (
   state$,
 ) => {
   return action$.pipe(
-    filter$(isActionOf([setCategory, setSortBy, setDate, clearFilters])),
+    filter$(
+      isActionOf([setCategory, setSortBy, setDate, clearFilters, getMore]),
+    ),
     withLatestFrom$(state$),
     mergeMap$(([_, state]) => {
       let dateFrom = '';
@@ -108,6 +114,18 @@ export const fetchArticlesWhenRequested: _Store.IEpic = (
         ),
         catchError$((error: Error) => of$(getArticlesAction.failure(error))),
       );
+    }),
+  );
+};
+
+export const requestForArticlesOnGetMore: _Store.IEpic = (action$, state$) => {
+  return action$.pipe(
+    filter$(isActionOf(getMore)),
+    withLatestFrom$(state$),
+    mergeMap$(([_, state]) => {
+      const page = getPagination(state);
+
+      return of$(setPagination(page + 1));
     }),
   );
 };

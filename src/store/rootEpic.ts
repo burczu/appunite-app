@@ -8,9 +8,10 @@ import * as Sources from '@Model/sources/epics';
 /* @@STORE_COMPONENT@@ */
 export default combineEpics(
   // Articles
-  Articles.fetchArticlesWhenRequested,
+  Articles.requestForArticlesOnGetMore,
   Articles.requestArticlesWhenFiltersChanged,
   Articles.requestArticlesWhenLocationChangedToHome,
+  Articles.fetchArticlesWhenRequested,
 
   // Filters
   Filters.setCategoryWhenSelected,

@@ -18,11 +18,12 @@ import endOfToday from 'date-fns/endOfToday';
 import startOfToday from 'date-fns/startOfToday';
 import { ActionsObservable, StateObservable } from 'redux-observable';
 import { of as of$, Subject, throwError } from 'rxjs';
-import { getArticles } from './../actions';
+import { getArticles, getMore, setPagination } from './../actions';
 import {
   fetchArticlesWhenRequested,
   requestArticlesWhenFiltersChanged,
   requestArticlesWhenLocationChangedToHome,
+  requestForArticlesOnGetMore,
 } from './../epics';
 
 describe('articles epic', () => {
@@ -249,6 +250,21 @@ describe('articles epic', () => {
       { articlesApi: ArticlesApi },
       // @ts-ignore
     ).subscribe((action) => {
+      expect(action).toEqual(expected);
+      done();
+    });
+  });
+
+  it('should set pagination when get more requested', (done) => {
+    const expectedSource = 'test-id';
+
+    const state$ = getMockedState(expectedSource, POPULARITY, TODAY);
+    const action$ = ActionsObservable.of(getMore());
+
+    const expected = setPagination(2);
+
+    // @ts-ignore
+    requestForArticlesOnGetMore(action$, state$).subscribe((action) => {
       expect(action).toEqual(expected);
       done();
     });

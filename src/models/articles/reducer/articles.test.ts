@@ -1,5 +1,5 @@
 import { ActionType } from 'typesafe-actions';
-import { getArticles } from './../actions';
+import { getArticles, resetArticles } from './../actions';
 import { IArticlesReducer } from './../types';
 import reducer from './articles';
 
@@ -26,5 +26,9 @@ describe('articlesReducer', () => {
     ];
 
     expect(reducer([], getArticles.success(mockData))).toEqual(mockData);
+  });
+
+  it('should handle _RESET_ARTICLES', () => {
+    expect(reducer([], resetArticles())).toEqual([]);
   });
 });

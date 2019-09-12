@@ -2,6 +2,7 @@ import {
   _GET_FAILURE,
   _GET_REQUEST,
   _GET_SUCCESS,
+  _RESET_ARTICLES,
   _SET_PAGINATION,
   GET_MORE,
 } from '@Model/articles/constants/actions';
@@ -17,3 +18,5 @@ export const getArticles = createAsyncAction(
 export const setPagination = createStandardAction(_SET_PAGINATION)<number>();
 
 export const getMore = createStandardAction(GET_MORE)();
+
+export const resetArticles = createStandardAction(_RESET_ARTICLES)();

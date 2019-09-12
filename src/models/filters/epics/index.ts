@@ -1,5 +1,5 @@
+import { resetArticles, setPagination } from '@Model/articles/actions';
 import _Store from '@Store';
-import { of as of$ } from 'rxjs';
 import {
   filter as filter$,
   mergeMap as mergeMap$,
@@ -26,11 +26,13 @@ export const setCategoryWhenSelected: _Store.IEpic = (action$, state$) => {
       const category = action.payload;
       const selectedCategory = getSelectedCategory(state);
 
+      const common = [setPagination(1), resetArticles()];
+
       if (category === selectedCategory) {
-        return of$(setCategory(undefined));
+        return [...common, setCategory(undefined)];
       }
 
-      return of$(setCategory(category));
+      return [...common, setCategory(category)];
     }),
   );
 };
@@ -43,11 +45,13 @@ export const setSortByWhenSelected: _Store.IEpic = (action$, state$) => {
       const sortBy = action.payload;
       const selectedSortBy = getSelectedSortBy(state);
 
+      const common = [setPagination(1), resetArticles()];
+
       if (sortBy === selectedSortBy) {
-        return of$(setSortBy(undefined));
+        return [...common, setSortBy(undefined)];
       }
 
-      return of$(setSortBy(sortBy));
+      return [...common, setSortBy(sortBy)];
     }),
   );
 };
@@ -60,11 +64,13 @@ export const setDateWhenSelected: _Store.IEpic = (action$, state$) => {
       const dateString = action.payload;
       const selectedDate = getSelectedDate(state);
 
+      const common = [setPagination(1), resetArticles()];
+
       if (dateString === selectedDate) {
-        return of$(setDate(undefined));
+        return [...common, setDate(undefined)];
       }
 
-      return of$(setDate(dateString));
+      return [...common, setDate(dateString)];
     }),
   );
 };

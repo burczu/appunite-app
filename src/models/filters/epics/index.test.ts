@@ -1,3 +1,4 @@
+import { resetArticles, setPagination } from '@Model/articles/actions';
 import { ActionsObservable, StateObservable } from 'redux-observable';
 import { Subject } from 'rxjs';
 import 'rxjs/add/operator/take';
@@ -46,10 +47,15 @@ describe('filters epic', () => {
     const expected = setCategory(testPayload);
 
     // @ts-ignore
-    setCategoryWhenSelected(action$, state$).subscribe((action) => {
-      expect(action).toEqual(expected);
-      done();
-    });
+    setCategoryWhenSelected(action$, state$)
+      .take(3)
+      .toArray()
+      .subscribe((action: any) => {
+        expect(action[0]).toEqual(setPagination(1));
+        expect(action[1]).toEqual(resetArticles());
+        expect(action[2]).toEqual(expected);
+        done();
+      });
   });
 
   it('should set sort by filter when expected', (done) => {
@@ -58,10 +64,15 @@ describe('filters epic', () => {
     const expected = setSortBy(testPayload);
 
     // @ts-ignore
-    setSortByWhenSelected(action$, state$).subscribe((action) => {
-      expect(action).toEqual(expected);
-      done();
-    });
+    setSortByWhenSelected(action$, state$)
+      .take(3)
+      .toArray()
+      .subscribe((action: any) => {
+        expect(action[0]).toEqual(setPagination(1));
+        expect(action[1]).toEqual(resetArticles());
+        expect(action[2]).toEqual(expected);
+        done();
+      });
   });
 
   it('should set date filter when expected', (done) => {
@@ -70,9 +81,14 @@ describe('filters epic', () => {
     const expected = setDate(testPayload);
 
     // @ts-ignore
-    setDateWhenSelected(action$, state$).subscribe((action) => {
-      expect(action).toEqual(expected);
-      done();
-    });
+    setDateWhenSelected(action$, state$)
+      .take(3)
+      .toArray()
+      .subscribe((action: any) => {
+        expect(action[0]).toEqual(setPagination(1));
+        expect(action[1]).toEqual(resetArticles());
+        expect(action[2]).toEqual(expected);
+        done();
+      });
   });
 });

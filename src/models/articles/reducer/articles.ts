@@ -1,5 +1,5 @@
 import { getType } from 'typesafe-actions';
-import { getArticles } from './../actions';
+import { getArticles, resetArticles } from './../actions';
 import { IAction, IArticlesReducer } from './../types';
 
 const initialState: IArticlesReducer = [];
@@ -11,6 +11,8 @@ const articlesReducer = (
   switch (action.type) {
     case getType(getArticles.success):
       return action.payload;
+    case getType(resetArticles):
+      return initialState;
     default:
       return state;
   }

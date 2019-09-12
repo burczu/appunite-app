@@ -7,3 +7,4 @@ export const _SET_DATE = 'NewsApp/filters/_SET_DATE';
 export const SET_CATEGORY_FILTER = 'NewsApp/filters/SET_CATEGORY_FILTER';
 export const SET_SORT_BY_FILTER = 'NewsApp/filters/SET_SORT_BY_FILTER';
 export const SET_DATE_FILTER = 'NewsApp/filters/SET_DATE_FILTER';
+export const CLEAR_FILTERS = 'NewsApp/filters/CLEAR_FILTERS';

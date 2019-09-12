@@ -1,0 +1,33 @@
+@import '@Styles/defs/colors.module.scss';
+
+:global {
+  .Dropdown-option.is-selected {
+    color: $distinct_color;
+  }
+}
+
+.dropDown {
+  border-bottom: 0.1rem solid $default_grey;
+  width: 20rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.menu {
+  border: 0.1rem solid $default_grey;
+  border-bottom: none;
+}
+
+.placeholder {
+  padding: 0.7rem 0;
+}
+
+.menu > div {
+  padding: 1.6rem;
+}
+
+.menu > div:hover {
+  background: $default_grey;
+}

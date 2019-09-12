@@ -1,0 +1,5 @@
+@import '@Styles/defs/mixins.module.scss';
+
+.dropDown {
+  @include dropDown;
+}

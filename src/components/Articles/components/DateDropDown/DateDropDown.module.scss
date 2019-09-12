@@ -1,0 +1,11 @@
+@import '@Styles/defs/mixins.module.scss';
+@import '@Styles/defs/props.module.scss';
+
+.dropDown {
+  @include dropDown;
+  margin-bottom: 2rem;
+
+  @media screen and (min-width: $screen_desktop) {
+    margin-bottom: 0;
+  }
+}

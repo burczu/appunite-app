@@ -2,6 +2,7 @@ import React from 'react';
 
 import DropDown from '@Compo/reusable/DropDown';
 import { ITopicDropDownProps } from './TopicDropDown';
+import styles from './TopicDropDown.module.scss';
 
 const TopicDropDown = ({
   categories,
@@ -14,6 +15,7 @@ const TopicDropDown = ({
 
   return (
     <DropDown
+      className={styles.dropDown}
       options={categories}
       onSelect={handleOnSelect}
       placeholder="Topic"

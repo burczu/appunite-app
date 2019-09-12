@@ -20,10 +20,12 @@
 }
 
 .menu {
+  background: $default_white;
   border: 0.1rem solid $default_grey;
   border-top: none;
   position: absolute;
   width: 100%;
+  z-index: 1;
 }
 
 .placeholder {

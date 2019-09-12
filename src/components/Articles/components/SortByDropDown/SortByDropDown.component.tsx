@@ -3,6 +3,7 @@ import React from 'react';
 import DropDown from '@Compo/reusable/DropDown';
 import { IFiltersSortBy } from '@Model/filters/types';
 import { ISortByDropDownProps } from './SortByDropDown';
+import styles from './SortByDropDown.module.scss';
 
 const SortByDropDown = ({
   selectedSortBy,
@@ -15,6 +16,7 @@ const SortByDropDown = ({
 
   return (
     <DropDown
+      className={styles.dropDown}
       options={sortBys}
       onSelect={handleOnSelect}
       placeholder="Sort by"

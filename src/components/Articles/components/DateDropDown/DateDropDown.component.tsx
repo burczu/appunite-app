@@ -3,6 +3,7 @@ import React from 'react';
 import DropDown from '@Compo/reusable/DropDown';
 import { IFiltersDates } from '@Model/filters/types';
 import { IDateDropDownProps } from './DateDropDown';
+import styles from './DateDropDown.module.scss';
 
 const DateDropDown = ({
   dates,
@@ -15,6 +16,7 @@ const DateDropDown = ({
 
   return (
     <DropDown
+      className={styles.dropDown}
       options={dates}
       onSelect={handleOnSelect}
       placeholder="Time"

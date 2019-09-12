@@ -1,10 +1,12 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
+import cn from 'classnames';
 import Select, { Option } from 'react-dropdown';
 import { IDropDownProps } from './DropDown';
 import styles from './DropDown.module.scss';
 
 const DropDown = ({
+  className,
   options,
   onSelect,
   placeholder,
@@ -16,7 +18,7 @@ const DropDown = ({
 
   return (
     <Select
-      className={styles.dropDown}
+      className={cn(styles.dropDown, className)}
       placeholderClassName={styles.placeholder}
       menuClassName={styles.menu}
       options={options}

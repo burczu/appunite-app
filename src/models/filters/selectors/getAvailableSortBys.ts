@@ -7,4 +7,4 @@ const getAvailableSortBys = (): IFiltersSortBy[] => [
   RELEVANCY,
 ];
 
-export default getAvailableSortBys();
+export default getAvailableSortBys;

@@ -2,7 +2,7 @@
 
 :global {
   .Dropdown-root.is-open {
-    border-bottom: 0.1rem solid $default_grey;
+    border-bottom: none;
   }
 
   .Dropdown-option.is-selected {
@@ -11,6 +11,7 @@
 }
 
 .dropDown {
+  position: relative;
   width: 15rem;
 
   &:hover {
@@ -20,8 +21,9 @@
 
 .menu {
   border: 0.1rem solid $default_grey;
-  border-bottom: none;
   border-top: none;
+  position: absolute;
+  width: 100%;
 }
 
 .placeholder {

@@ -1,0 +1,17 @@
+@import '@Styles/defs/colors.module.scss';
+
+.container {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.clearButton {
+  background: $default_white;
+  border: 0.2rem solid $distinct_color;
+  color: $distinct_color;
+  padding: 0.4rem 4rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

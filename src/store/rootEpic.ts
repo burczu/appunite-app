@@ -13,6 +13,7 @@ export default combineEpics(
 
   // Filters
   Filters.setCategoryWhenSelected,
+  Filters.setDateWhenSelected,
   Filters.setSortByWhenSelected,
 
   // Sources

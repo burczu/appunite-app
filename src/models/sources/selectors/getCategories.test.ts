@@ -41,7 +41,7 @@ describe('getCategories selector', () => {
     const mockedState: StateType<typeof rootReducer> = {
       articles: [],
       filters: {
-        selectedCategory: null,
+        selectedCategory: undefined,
       },
       router: {
         action: 'REPLACE',

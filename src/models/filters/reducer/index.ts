@@ -1,9 +1,9 @@
-import { setCategoryFilter } from '@Model/filters/actions';
+import { setFilter } from '@Model/filters/actions';
 import { getType } from 'typesafe-actions';
 import { IAction, IFiltersReducer } from './../types';
 
 const initialState: IFiltersReducer = {
-  selectedCategory: null,
+  selectedCategory: undefined,
 };
 
 const sourcesReducer = (
@@ -11,7 +11,7 @@ const sourcesReducer = (
   action: IAction,
 ): IFiltersReducer => {
   switch (action.type) {
-    case getType(setCategoryFilter):
+    case getType(setFilter):
       return { ...state, selectedCategory: action.payload };
     default:
       return state;

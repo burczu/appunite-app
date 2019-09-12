@@ -1,5 +1,3 @@
-// Private action creators
-export const _SET_FILTER = 'NewsApp/filters/_SET_FILTER';
-
-// Public action creators
-export const SET_CATEGORY_FILTER = 'NewsApp/filters/SET_CATEGORY_FILTER';
+export const RELEVANCY = 'relevancy';
+export const POPULARITY = 'popularity';
+export const PUBLISHED_AT = 'publishedAt';

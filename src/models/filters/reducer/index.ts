@@ -4,6 +4,7 @@ import { IAction, IFiltersReducer } from './../types';
 
 const initialState: IFiltersReducer = {
   selectedCategory: undefined,
+  selectedSortBy: undefined,
 };
 
 const sourcesReducer = (

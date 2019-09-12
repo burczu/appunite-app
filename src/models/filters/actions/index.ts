@@ -1,5 +1,5 @@
 import { createStandardAction } from 'typesafe-actions';
-import { _SET_FILTER, SET_CATEGORY_FILTER } from './../constants/constants';
+import { _SET_FILTER, SET_CATEGORY_FILTER } from './../constants/actions';
 
 export const setCategoryFilter = createStandardAction(SET_CATEGORY_FILTER)<
   string

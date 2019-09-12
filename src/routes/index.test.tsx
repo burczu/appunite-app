@@ -17,6 +17,7 @@ describe('Routes', () => {
     articles: [],
     filters: {
       selectedCategory: undefined,
+      selectedSortBy: undefined,
     },
     router: {
       action: 'REPLACE',

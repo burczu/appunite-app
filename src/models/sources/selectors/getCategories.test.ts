@@ -43,6 +43,7 @@ describe('getCategories selector', () => {
       articles: [],
       filters: {
         selectedCategory: undefined,
+        selectedSortBy: undefined,
       },
       router: {
         action: 'REPLACE',

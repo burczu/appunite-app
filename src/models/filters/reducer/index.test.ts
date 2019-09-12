@@ -6,6 +6,7 @@ import reducer from './index';
 describe('filtersReducer', () => {
   const initialState: IFiltersReducer = {
     selectedCategory: undefined,
+    selectedSortBy: undefined,
   };
 
   it('should return initial state', () => {

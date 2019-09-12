@@ -9,6 +9,7 @@ describe('filters epic', () => {
     const testPayload = 'test';
     const mockedFilters: IFiltersReducer = {
       selectedCategory: undefined,
+      selectedSortBy: undefined,
     };
 
     const state$ = new StateObservable(new Subject(), {

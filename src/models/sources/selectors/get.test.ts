@@ -21,6 +21,7 @@ describe('get (sources) selector', () => {
       articles: [],
       filters: {
         selectedCategory: undefined,
+        selectedSortBy: undefined,
       },
       router: {
         action: 'REPLACE',

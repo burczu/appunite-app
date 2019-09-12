@@ -16,6 +16,7 @@ const TopicDropDown = ({
     <DropDown
       options={categories}
       onSelect={handleOnSelect}
+      placeholder="Topic"
       value={selectedCategory}
     />
   );

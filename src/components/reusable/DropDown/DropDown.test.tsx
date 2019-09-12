@@ -16,6 +16,7 @@ describe('DropDown', () => {
         options={testOptions}
         onSelect={testOnSelect}
         value={testValue}
+        placeholder="test"
       />,
     );
 

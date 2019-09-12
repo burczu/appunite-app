@@ -6,7 +6,7 @@ import TopicDropDown from './components/TopicDropDown';
 const Articles = () => {
   return (
     <div className={styles.container}>
-      <h1>Articles</h1>
+      <h1 className={styles.title}>Articles</h1>
       <section className={styles.filters}>
         <TopicDropDown />
       </section>

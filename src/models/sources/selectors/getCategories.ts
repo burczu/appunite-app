@@ -10,10 +10,12 @@ const getCategories = createSelector<_Store.IState, ISourcesReducer, string[]>(
 
     sources.forEach((source) => {
       const { category } = source;
-      const found = result.find((item) => item === category);
+      const found = result.find(
+        (item) => item.toLowerCase() === category.toLowerCase(),
+      );
 
       if (!found) {
-        result.push(category);
+        result.push(`${category.charAt(0).toUpperCase()}${category.slice(1)}`);
       }
     });
 

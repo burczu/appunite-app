@@ -17,7 +17,7 @@ const SortByDropDown = ({
     <DropDown
       options={sortBys}
       onSelect={handleOnSelect}
-      placeholder="Time"
+      placeholder="Sort by"
       value={selectedSortBy}
     />
   );

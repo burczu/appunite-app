@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './Articles.module.scss';
+import DateDropDown from './components/DateDropDown';
 import SortByDropDown from './components/SortByDropDown';
 import TopicDropDown from './components/TopicDropDown';
 
@@ -11,6 +12,7 @@ const Articles = () => {
       <section className={styles.filters}>
         <TopicDropDown />
         <SortByDropDown />
+        <DateDropDown />
       </section>
     </div>
   );

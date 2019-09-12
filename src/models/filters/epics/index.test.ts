@@ -1,6 +1,9 @@
 import { ActionsObservable, StateObservable } from 'redux-observable';
 import { Subject } from 'rxjs';
+import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/toArray';
 import {
+  clearFilters,
   setCategory,
   setCategoryFilter,
   setDate,
@@ -13,35 +16,35 @@ import { IFiltersReducer } from './../types';
 import {
   setCategoryWhenSelected,
   setDateWhenSelected,
+  setFiltersWhenFiltersClear,
   setSortByWhenSelected,
 } from './index';
 
 describe('filters epic', () => {
+  const mockedFilters: IFiltersReducer = {
+    selectedCategory: undefined,
+    selectedDate: undefined,
+    selectedSortBy: undefined,
+  };
+
+  const state$ = new StateObservable(new Subject(), {
+    articles: [],
+    filters: mockedFilters,
+    router: {
+      action: 'REPLACE',
+      location: {
+        hash: '',
+        pathname: '/',
+        search: '',
+        state: null,
+      },
+    },
+    sources: [],
+  });
+
   it('should set category filter when expected', (done) => {
     const testPayload = 'test';
-    const mockedFilters: IFiltersReducer = {
-      selectedCategory: undefined,
-      selectedDate: undefined,
-      selectedSortBy: undefined,
-    };
-
-    const state$ = new StateObservable(new Subject(), {
-      articles: [],
-      filters: mockedFilters,
-      router: {
-        action: 'REPLACE',
-        location: {
-          hash: '',
-          pathname: '/',
-          search: '',
-          state: null,
-        },
-      },
-      sources: [],
-    });
-
     const action$ = ActionsObservable.of(setCategoryFilter(testPayload));
-
     const expected = setCategory(testPayload);
 
     // @ts-ignore
@@ -53,29 +56,7 @@ describe('filters epic', () => {
 
   it('should set sort by filter when expected', (done) => {
     const testPayload = RELEVANCY;
-    const mockedFilters: IFiltersReducer = {
-      selectedCategory: undefined,
-      selectedDate: undefined,
-      selectedSortBy: undefined,
-    };
-
-    const state$ = new StateObservable(new Subject(), {
-      articles: [],
-      filters: mockedFilters,
-      router: {
-        action: 'REPLACE',
-        location: {
-          hash: '',
-          pathname: '/',
-          search: '',
-          state: null,
-        },
-      },
-      sources: [],
-    });
-
     const action$ = ActionsObservable.of(setSortByFilter(testPayload));
-
     const expected = setSortBy(testPayload);
 
     // @ts-ignore
@@ -87,15 +68,26 @@ describe('filters epic', () => {
 
   it('should set date filter when expected', (done) => {
     const testPayload = TODAY;
-    const mockedFilters: IFiltersReducer = {
-      selectedCategory: undefined,
-      selectedDate: undefined,
-      selectedSortBy: undefined,
+    const action$ = ActionsObservable.of(setDateFilter(testPayload));
+    const expected = setDate(testPayload);
+
+    // @ts-ignore
+    setDateWhenSelected(action$, state$).subscribe((action) => {
+      expect(action).toEqual(expected);
+      done();
+    });
+  });
+
+  it('should clear all the filters when expected', (done) => {
+    const filters: IFiltersReducer = {
+      selectedCategory: 'test',
+      selectedDate: TODAY,
+      selectedSortBy: RELEVANCY,
     };
 
-    const state$ = new StateObservable(new Subject(), {
+    const newState$ = new StateObservable(new Subject(), {
       articles: [],
-      filters: mockedFilters,
+      filters,
       router: {
         action: 'REPLACE',
         location: {
@@ -108,14 +100,18 @@ describe('filters epic', () => {
       sources: [],
     });
 
-    const action$ = ActionsObservable.of(setDateFilter(testPayload));
-
-    const expected = setDate(testPayload);
+    const action$ = ActionsObservable.of(clearFilters());
 
     // @ts-ignore
-    setDateWhenSelected(action$, state$).subscribe((action) => {
-      expect(action).toEqual(expected);
-      done();
-    });
+    setFiltersWhenFiltersClear(action$, newState$)
+      .take(3)
+      .toArray()
+      // @ts-ignore
+      .subscribe(([actionCategory, actionSortBy, actionDate]) => {
+        expect(actionCategory).toEqual(setCategory(undefined));
+        expect(actionSortBy).toEqual(setSortBy(undefined));
+        expect(actionDate).toEqual(setDate(undefined));
+        done();
+      });
   });
 });

@@ -14,6 +14,7 @@ export default combineEpics(
   // Filters
   Filters.setCategoryWhenSelected,
   Filters.setDateWhenSelected,
+  Filters.setFiltersWhenFiltersClear,
   Filters.setSortByWhenSelected,
 
   // Sources

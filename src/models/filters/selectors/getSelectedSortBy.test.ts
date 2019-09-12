@@ -1,14 +1,15 @@
 import rootReducer from '@/store/rootReducer';
 import { StateType } from 'typesafe-actions';
+import { RELEVANCY } from './../constants/constants';
 import { IFiltersReducer } from './../types';
-import getSelectedCategory from './getSelectedCategory';
+import getSelectedSortBy from './getSelectedSortBy';
 
-describe('getSelectedCategory selector', () => {
-  it('should return currently selected category', () => {
-    const expected = 'test';
+describe('getSelectedSortBy selector', () => {
+  it('should return current selected sort by value', () => {
+    const expected = RELEVANCY;
     const mockedFilters: IFiltersReducer = {
-      selectedCategory: expected,
-      selectedSortBy: undefined,
+      selectedCategory: undefined,
+      selectedSortBy: expected,
     };
     const mockedState: StateType<typeof rootReducer> = {
       articles: [],
@@ -25,6 +26,6 @@ describe('getSelectedCategory selector', () => {
       sources: [],
     };
 
-    expect(getSelectedCategory(mockedState)).toEqual(expected);
+    expect(getSelectedSortBy(mockedState)).toEqual(expected);
   });
 });

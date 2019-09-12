@@ -39,7 +39,9 @@ describe('getCategories selector', () => {
       },
     ];
     const mockedState: StateType<typeof rootReducer> = {
-      articles: [],
+      articles: {
+        articles: [],
+      },
       filters: {
         selectedCategory: undefined,
         selectedDate: undefined,

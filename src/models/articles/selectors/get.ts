@@ -3,6 +3,6 @@ import { Selector } from 'reselect';
 import { IArticlesReducer } from './../types';
 
 const get: Selector<_Store.IState, IArticlesReducer> = (state) =>
-  state.articles;
+  state.articles.articles;
 
 export default get;

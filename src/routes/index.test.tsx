@@ -14,7 +14,9 @@ describe('Routes', () => {
   const mockStore = configureStore([]);
 
   const initialState: StateType<typeof rootReducer> = {
-    articles: [],
+    articles: {
+      articles: [],
+    },
     filters: {
       selectedCategory: undefined,
       selectedDate: undefined,

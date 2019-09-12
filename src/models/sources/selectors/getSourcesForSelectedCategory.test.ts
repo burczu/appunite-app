@@ -43,7 +43,9 @@ describe('getSourcesForSelectedCategory selector', () => {
       },
     ];
     const mockedState: StateType<typeof rootReducer> = {
-      articles: [],
+      articles: {
+        articles: [],
+      },
       filters: {
         selectedCategory: mockSelectedCategory,
         selectedDate: undefined,

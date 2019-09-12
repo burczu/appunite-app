@@ -1,7 +1,7 @@
 import { ActionType } from 'typesafe-actions';
 import { getArticles } from './../actions';
 import { IArticlesReducer } from './../types';
-import reducer from './index';
+import reducer from './articles';
 
 describe('articlesReducer', () => {
   it('should return initial state', () => {

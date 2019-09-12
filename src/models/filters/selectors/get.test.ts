@@ -12,7 +12,9 @@ describe('get (filters) selector', () => {
     };
 
     const mockedState: StateType<typeof rootReducer> = {
-      articles: [],
+      articles: {
+        articles: [],
+      },
       filters: mockedFilters,
       router: {
         action: 'REPLACE',

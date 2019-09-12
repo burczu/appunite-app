@@ -12,7 +12,9 @@ describe('getSelectedCategory selector', () => {
       selectedSortBy: undefined,
     };
     const mockedState: StateType<typeof rootReducer> = {
-      articles: [],
+      articles: {
+        articles: [],
+      },
       filters: mockedFilters,
       router: {
         action: 'REPLACE',

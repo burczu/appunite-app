@@ -2,6 +2,7 @@ import React from 'react';
 
 import { shallow } from 'enzyme';
 import Articles from './Articles.component';
+import SortByDropDown from './components/SortByDropDown';
 import TopicDropDown from './components/TopicDropDown';
 
 describe('Articles component', () => {
@@ -21,5 +22,11 @@ describe('Articles component', () => {
     const wrapper = shallow(<Articles />);
 
     expect(wrapper.find(TopicDropDown)).toHaveLength(1);
+  });
+
+  it('should render SortByDropDown', () => {
+    const wrapper = shallow(<Articles />);
+
+    expect(wrapper.find(SortByDropDown)).toHaveLength(1);
   });
 });

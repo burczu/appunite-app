@@ -9,4 +9,8 @@
 .filters {
   display: flex;
   margin-top: 7rem;
+
+  & > div {
+    margin-right: 1.6rem;
+  }
 }

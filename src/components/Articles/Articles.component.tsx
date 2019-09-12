@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './Articles.module.scss';
+import SortByDropDown from './components/SortByDropDown';
 import TopicDropDown from './components/TopicDropDown';
 
 const Articles = () => {
@@ -9,6 +10,7 @@ const Articles = () => {
       <h1 className={styles.title}>Articles</h1>
       <section className={styles.filters}>
         <TopicDropDown />
+        <SortByDropDown />
       </section>
     </div>
   );

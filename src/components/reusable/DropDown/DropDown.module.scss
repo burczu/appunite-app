@@ -1,14 +1,17 @@
 @import '@Styles/defs/colors.module.scss';
 
 :global {
+  .Dropdown-root.is-open {
+    border-bottom: 0.1rem solid $default_grey;
+  }
+
   .Dropdown-option.is-selected {
     color: $distinct_color;
   }
 }
 
 .dropDown {
-  border-bottom: 0.1rem solid $default_grey;
-  width: 20rem;
+  width: 15rem;
 
   &:hover {
     cursor: pointer;
@@ -18,9 +21,11 @@
 .menu {
   border: 0.1rem solid $default_grey;
   border-bottom: none;
+  border-top: none;
 }
 
 .placeholder {
+  border-bottom: 0.1rem solid $default_grey;
   padding: 0.7rem 0;
 }
 

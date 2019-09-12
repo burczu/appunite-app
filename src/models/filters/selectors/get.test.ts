@@ -7,6 +7,7 @@ describe('get (filters) selector', () => {
   it('should return filters state', () => {
     const mockedFilters: IFiltersReducer = {
       selectedCategory: 'test',
+      selectedDate: undefined,
       selectedSortBy: undefined,
     };
 

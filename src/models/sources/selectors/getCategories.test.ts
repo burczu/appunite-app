@@ -42,6 +42,7 @@ describe('getCategories selector', () => {
       articles: [],
       filters: {
         selectedCategory: undefined,
+        selectedDate: undefined,
         selectedSortBy: undefined,
       },
       router: {

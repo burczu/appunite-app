@@ -8,6 +8,7 @@ describe('getSelectedCategory selector', () => {
     const expected = 'test';
     const mockedFilters: IFiltersReducer = {
       selectedCategory: expected,
+      selectedDate: undefined,
       selectedSortBy: undefined,
     };
     const mockedState: StateType<typeof rootReducer> = {

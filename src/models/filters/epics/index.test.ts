@@ -15,6 +15,7 @@ describe('filters epic', () => {
     const testPayload = 'test';
     const mockedFilters: IFiltersReducer = {
       selectedCategory: undefined,
+      selectedDate: undefined,
       selectedSortBy: undefined,
     };
 
@@ -48,6 +49,7 @@ describe('filters epic', () => {
     const testPayload = RELEVANCY;
     const mockedFilters: IFiltersReducer = {
       selectedCategory: undefined,
+      selectedDate: undefined,
       selectedSortBy: undefined,
     };
 

@@ -17,6 +17,7 @@ describe('Routes', () => {
     articles: [],
     filters: {
       selectedCategory: undefined,
+      selectedDate: undefined,
       selectedSortBy: undefined,
     },
     router: {

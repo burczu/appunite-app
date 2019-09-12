@@ -7,6 +7,7 @@ import reducer from './index';
 describe('filtersReducer', () => {
   const initialState: IFiltersReducer = {
     selectedCategory: undefined,
+    selectedDate: undefined,
     selectedSortBy: undefined,
   };
 

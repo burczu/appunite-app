@@ -43,7 +43,9 @@ class ArticlesApi {
       this.cancelTokenArticles = axios.CancelToken.source();
 
       axios
-        .get(ArticlesApi.getUrl(sources, sortBy, dateFrom, dateTo))
+        .get(ArticlesApi.getUrl(sources, sortBy, dateFrom, dateTo), {
+          cancelToken: this.cancelTokenArticles.token,
+        })
         .then(getData)
         .then((response: IArticlesResponse) => {
           resolve(response);

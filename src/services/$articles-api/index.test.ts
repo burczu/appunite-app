@@ -85,7 +85,9 @@ describe('NewsApi', () => {
 
         await NewsApi.getArticles([], '', '', '');
 
-        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
+        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
+          cancelToken: {},
+        });
       });
     });
 
@@ -100,7 +102,9 @@ describe('NewsApi', () => {
 
         await NewsApi.getArticles(mockSources, '', '', '');
 
-        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
+        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
+          cancelToken: {},
+        });
       });
     });
 
@@ -116,7 +120,9 @@ describe('NewsApi', () => {
 
         await NewsApi.getArticles(mockSources, mockSortBy, '', '');
 
-        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
+        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
+          cancelToken: {},
+        });
       });
     });
 
@@ -141,7 +147,9 @@ describe('NewsApi', () => {
           mockDateTo,
         );
 
-        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
+        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
+          cancelToken: {},
+        });
       });
     });
 
@@ -152,7 +160,9 @@ describe('NewsApi', () => {
 
         await NewsApi.getArticles([], mockSortBy, '', '');
 
-        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
+        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
+          cancelToken: {},
+        });
       });
     });
 
@@ -165,7 +175,9 @@ describe('NewsApi', () => {
 
         await NewsApi.getArticles([], mockSortBy, mockDateFrom, mockDateTo);
 
-        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
+        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
+          cancelToken: {},
+        });
       });
     });
 
@@ -177,7 +189,9 @@ describe('NewsApi', () => {
 
         await NewsApi.getArticles([], '', mockDateFrom, mockDateTo);
 
-        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
+        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
+          cancelToken: {},
+        });
       });
     });
 
@@ -188,7 +202,9 @@ describe('NewsApi', () => {
 
         await NewsApi.getArticles([], '', mockDateFrom, '');
 
-        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
+        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
+          cancelToken: {},
+        });
       });
     });
 
@@ -199,7 +215,9 @@ describe('NewsApi', () => {
 
         await NewsApi.getArticles([], '', '', mockDateTo);
 
-        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
+        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
+          cancelToken: {},
+        });
       });
     });
 
@@ -216,7 +234,9 @@ describe('NewsApi', () => {
 
         await NewsApi.getArticles(mockSources, '', mockDateFrom, mockDateTo);
 
-        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl);
+        expect(mockAxios.get).toHaveBeenCalledWith(expectedUrl, {
+          cancelToken: {},
+        });
       });
     });
   });

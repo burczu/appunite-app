@@ -1,7 +1,32 @@
+@import '@Styles/defs/props.module.scss';
+
 .container {
   width: 100%;
 }
 
 .title {
   font-weight: normal;
+}
+
+.articles {
+  margin-top: 2.5rem;
+}
+
+.list {
+  list-style: none;
+}
+
+@media screen and (min-width: $screen_tablet) {
+  .list {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+  }
+}
+
+@media screen and (min-width: $screen_desktop) {
+  .list {
+    grid-gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  }
 }

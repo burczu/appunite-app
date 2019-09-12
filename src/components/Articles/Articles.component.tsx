@@ -3,6 +3,7 @@ import React from 'react';
 import Filters from '@Compo/Filters';
 import { IArticlesProps } from './Articles';
 import styles from './Articles.module.scss';
+import Article from './components/Article';
 
 const Articles = ({ articles }: IArticlesProps) => {
   return (
@@ -10,11 +11,11 @@ const Articles = ({ articles }: IArticlesProps) => {
       <h1 className={styles.title}>Articles</h1>
       <Filters />
       <section className={styles.articles}>
-        <ul>
-          {/*using index here is an anti-pattern but the API*/}
-          {/*does not provide any useful identifier...*/}
-          {articles.map((article, index) => (
-            <li key={index}>{article.title}</li>
+        <ul className={styles.list}>
+          {articles.map((article) => (
+            <li key={article.url}>
+              <Article {...article} />
+            </li>
           ))}
         </ul>
       </section>

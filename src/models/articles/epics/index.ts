@@ -1,3 +1,4 @@
+import { getPagination } from '@Model/articles/selectors';
 import {
   clearFilters,
   setCategory,
@@ -87,11 +88,13 @@ export const fetchArticlesWhenRequested: _Store.IEpic = (
 ) => {
   return action$.pipe(
     filter$(isActionOf(getArticles.request)),
-    mergeMap$((action) => {
+    withLatestFrom$(state$),
+    mergeMap$(([action, state]) => {
       const { dateTo, dateFrom, sortBy, sources } = action.payload;
+      const page = getPagination(state);
 
       return from$(
-        articlesApi.getArticles(sources, sortBy, dateFrom, dateTo, 1),
+        articlesApi.getArticles(sources, sortBy, dateFrom, dateTo, page),
       ).pipe(
         map$((data: IArticlesResponse) => {
           return getArticles.success(data.articles);

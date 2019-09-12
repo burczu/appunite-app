@@ -170,6 +170,7 @@ describe('articles epic', () => {
   });
 
   it('should send correct action when success', (done) => {
+    const expectedSource = 'test-id';
     const response: IArticlesResponse = {
       articles: [
         {
@@ -195,12 +196,13 @@ describe('articles epic', () => {
       // @ts-ignore
       .mockImplementation(() => of$(response));
 
+    const state$ = getMockedState(expectedSource, POPULARITY, TODAY);
     const action$ = ActionsObservable.of(
       getArticles.request({
-        dateFrom: '',
-        dateTo: '',
-        sortBy: '',
-        sources: [],
+        dateFrom: startOfToday().toISOString(),
+        dateTo: endOfToday().toISOString(),
+        sortBy: POPULARITY,
+        sources: [expectedSource],
       }),
     );
     const expected = getArticles.success(response.articles);
@@ -208,7 +210,7 @@ describe('articles epic', () => {
     fetchArticlesWhenRequested(
       action$,
       // @ts-ignore
-      {},
+      state$,
       { articlesApi: ArticlesApi },
       // @ts-ignore
     ).subscribe((action) => {
@@ -219,18 +221,20 @@ describe('articles epic', () => {
 
   it('should send correct action when failure', (done) => {
     const error = new Error('test message');
+    const expectedSource = 'test-id';
 
     jest
       .spyOn(ArticlesApi, 'getArticles')
       // @ts-ignore
       .mockImplementation(() => throwError(error));
 
+    const state$ = getMockedState(expectedSource, POPULARITY, TODAY);
     const action$ = ActionsObservable.of(
       getArticles.request({
-        dateFrom: '',
-        dateTo: '',
-        sortBy: '',
-        sources: [],
+        dateFrom: startOfToday().toISOString(),
+        dateTo: endOfToday().toISOString(),
+        sortBy: POPULARITY,
+        sources: [expectedSource],
       }),
     );
     const expected = getArticles.failure(error);
@@ -238,7 +242,7 @@ describe('articles epic', () => {
     fetchArticlesWhenRequested(
       action$,
       // @ts-ignore
-      {},
+      state$,
       { articlesApi: ArticlesApi },
       // @ts-ignore
     ).subscribe((action) => {

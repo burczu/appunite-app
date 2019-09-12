@@ -1,3 +1,5 @@
+import { setCategoryFilter } from '@Model/filters/actions';
+import { getSelectedCategory } from '@Model/filters/selectors';
 import { getCategories } from '@Model/sources/selectors';
 import _Store from '@Store';
 import { connect } from 'react-redux';
@@ -10,13 +12,13 @@ import TopicDropDown from './TopicDropDown.component';
 
 const mapStateToProps = (state: _Store.IState): ITopicDropDownFromState => ({
   categories: getCategories(state),
-  selectedCategory: '',
+  selectedCategory: getSelectedCategory(state),
 });
 
 const mapDispatchToProps = (
   dispatch: Dispatch<AnyAction>,
 ): ITopicDropDownFromDispatch => ({
-  selectCategory: (value: string) => value,
+  selectCategory: (value: string) => dispatch(setCategoryFilter(value)),
 });
 
 export default connect<

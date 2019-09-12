@@ -1,6 +1,6 @@
 export interface ITopicDropDownFromState {
   categories: string[];
-  selectedCategory: string;
+  selectedCategory: string | undefined;
 }
 
 export interface ITopicDropDownFromDispatch {

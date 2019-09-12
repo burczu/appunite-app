@@ -16,6 +16,7 @@ describe('Routes', () => {
   const initialState: StateType<typeof rootReducer> = {
     articles: {
       articles: [],
+      pagination: 1,
     },
     filters: {
       selectedCategory: undefined,

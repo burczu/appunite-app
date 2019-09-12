@@ -30,6 +30,7 @@ describe('get (filters) selector', () => {
     const mockedState: StateType<typeof rootReducer> = {
       articles: {
         articles: expectedArticles,
+        pagination: 1,
       },
       filters: mockedFilters,
       router: {

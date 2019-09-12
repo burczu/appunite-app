@@ -25,5 +25,6 @@ export interface IArticlesRequestPayload {
 }
 
 export type IArticlesReducer = IArticle[];
+export type IArticlesPaginationReducer = number;
 
 export type IAction = ActionType<typeof actions>;

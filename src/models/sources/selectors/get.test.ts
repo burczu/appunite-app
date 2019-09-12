@@ -20,6 +20,7 @@ describe('get (sources) selector', () => {
     const mockedState: StateType<typeof rootReducer> = {
       articles: {
         articles: [],
+        pagination: 1,
       },
       filters: {
         selectedCategory: undefined,

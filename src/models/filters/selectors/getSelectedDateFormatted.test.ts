@@ -30,6 +30,7 @@ describe('getSelectedDateFormatted selector', () => {
     const mockedState: StateType<typeof rootReducer> = {
       articles: {
         articles: [],
+        pagination: 1,
       },
       filters: mockedFilters,
       router: {

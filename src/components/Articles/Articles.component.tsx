@@ -4,6 +4,7 @@ import Filters from '@Compo/Filters';
 import { IArticlesProps } from './Articles';
 import styles from './Articles.module.scss';
 import Article from './components/Article';
+import GetMore from './components/GetMore';
 
 const Articles = ({ articles }: IArticlesProps) => {
   return (
@@ -18,6 +19,7 @@ const Articles = ({ articles }: IArticlesProps) => {
             </li>
           ))}
         </ul>
+        <GetMore />
       </section>
     </div>
   );

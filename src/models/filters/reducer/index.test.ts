@@ -1,6 +1,7 @@
 import { ActionType } from 'typesafe-actions';
-import { setFilter } from './../actions';
-import { IFiltersReducer } from './../types';
+import { setFilter, setSortBy } from './../actions';
+import { RELEVANCY } from './../constants/constants';
+import { IFiltersReducer, IFiltersSortBy } from './../types';
 import reducer from './index';
 
 describe('filtersReducer', () => {
@@ -18,6 +19,14 @@ describe('filtersReducer', () => {
 
     expect(reducer(initialState, setFilter(mockPayload))).toEqual({
       selectedCategory: mockPayload,
+    });
+  });
+
+  it('should handle SET_SORT_BY_FILTER', () => {
+    const mockPayload: IFiltersSortBy = RELEVANCY;
+
+    expect(reducer(initialState, setSortBy(mockPayload))).toEqual({
+      selectedSortBy: mockPayload,
     });
   });
 });

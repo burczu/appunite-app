@@ -1,3 +1,5 @@
+import { getType } from 'typesafe-actions';
+import { setArticlesError, setSourcesError } from './../actions';
 import { IAction, IStateErrorsReducer } from './../types';
 
 const initialState: IStateErrorsReducer = {
@@ -10,6 +12,10 @@ const errorsReducer = (
   action: IAction,
 ): IStateErrorsReducer => {
   switch (action.type) {
+    case getType(setArticlesError):
+      return { ...state, articlesError: action.payload };
+    case getType(setSourcesError):
+      return { ...state, sourcesError: action.payload };
     default:
       return state;
   }

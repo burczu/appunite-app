@@ -4,6 +4,7 @@ import * as actions from './../actions';
 export interface IArticleSource {
   id: string | null;
   name: string;
+  url?: string;
 }
 
 export interface IArticle {

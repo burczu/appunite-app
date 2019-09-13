@@ -27,7 +27,12 @@ const Article = ({
         {format(new Date(publishedAt), 'MMM dd, yyy')}
       </span>
       <span className={styles.author}>{author}</span>
-      <span className={styles.source}>{source.name}</span>
+      {source.url && (
+        <a href={source.url} className={styles.source}>
+          {source.name}
+        </a>
+      )}
+      {!source.url && <span className={styles.source}>{source.name}</span>}
     </section>
     <h2 className={styles.title}>{title}</h2>
     <section className={styles.content}>{description}</section>

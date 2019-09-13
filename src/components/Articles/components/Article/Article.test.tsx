@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { IArticleSource } from '@Model/articles/types';
 import format from 'date-fns/format';
 import { shallow } from 'enzyme';
 import { IArticleProps } from './Article';
@@ -49,7 +50,18 @@ describe('Articles component', () => {
   it('should render source', () => {
     const wrapper = shallow(<Article {...props} />);
 
-    expect(wrapper.find('.source').text()).toEqual(props.source.name);
+    expect(wrapper.find('span.source').text()).toEqual(props.source.name);
+  });
+
+  it('should render link to source when url provided', () => {
+    const mockSource: IArticleSource = {
+      id: 'test-id',
+      name: 'test',
+      url: 'http://test.com',
+    };
+    const wrapper = shallow(<Article {...props} source={mockSource} />);
+
+    expect(wrapper.find('.source').prop('href')).toEqual(mockSource.url);
   });
 
   it('should render title', () => {

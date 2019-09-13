@@ -52,10 +52,10 @@ describe('Articles component', () => {
     expect(wrapper.find('.title').text()).toEqual(props.title);
   });
 
-  it('should render content', () => {
+  it('should render description', () => {
     const wrapper = shallow(<Article {...props} />);
 
-    expect(wrapper.find('.content').text()).toEqual(props.content);
+    expect(wrapper.find('.content').text()).toEqual(props.description);
   });
 
   it('should render link with correct url', () => {

@@ -7,7 +7,7 @@ import styles from './Article.module.scss';
 
 const Article = ({
   author,
-  content,
+  description,
   publishedAt,
   source,
   title,
@@ -30,7 +30,7 @@ const Article = ({
       <span className={styles.source}>{source.name}</span>
     </section>
     <h2 className={styles.title}>{title}</h2>
-    <section className={styles.content}>{content}</section>
+    <section className={styles.content}>{description}</section>
     <section className={styles.links}>
       <Link className={styles.link} to={`/articles/${url}`}>
         Read more

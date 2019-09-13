@@ -1,6 +1,6 @@
-# appunite-recruitment-app
+# appunite-app
 
-The news app for the AppUnite recruitment process.
+The news app for AppUnite.
 
 ## Tech stack
 

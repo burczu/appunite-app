@@ -25,6 +25,8 @@ export default combineEpics(
   Sources.requestSourcesWhenLocationChangedToHome,
 
   // State
+  State.setArticlesErrorOnArticlesFailure,
+  State.setSourcesErrorOnSourcesFailure,
   State.setArticlesLoaderOnArticlesRequest,
   State.setArticlesLoaderOnArticlesGetFinished,
   State.setSourcesLoaderOnSourcesRequest,

@@ -22,11 +22,19 @@
     grid-gap: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
   }
+
+  .loadingItem {
+    grid-column: span 2;
+  }
 }
 
 @media screen and (min-width: $screen_desktop) {
   .list {
     grid-gap: 3rem;
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  }
+
+  .loadingItem {
+    grid-column: span 3;
   }
 }

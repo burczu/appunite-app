@@ -13,19 +13,15 @@ const Articles = ({ articles, isLoading }: IArticlesProps) => {
       <h1 className={styles.title}>Articles</h1>
       <Filters />
       <section className={styles.articles}>
-        {isLoading && <Loader />}
-        {!isLoading && (
-          <>
-            <ul className={styles.list}>
-              {articles.map((article) => (
-                <li key={article.url}>
-                  <Article {...article} />
-                </li>
-              ))}
-            </ul>
-            <GetMore />
-          </>
-        )}
+        <ul className={styles.list}>
+          {articles.map((article) => (
+            <li key={article.url}>
+              <Article {...article} />
+            </li>
+          ))}
+          <li className={styles.loadingItem}>{isLoading && <Loader />}</li>
+        </ul>
+        {!isLoading && <GetMore />}
       </section>
     </div>
   );

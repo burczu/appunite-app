@@ -10,6 +10,7 @@ The news app for the AppUnite recruitment process.
 - react-router
 - redux-observable
 - reselect
+- webpack
 
 ## Testing
 
@@ -49,7 +50,13 @@ The app will be built into the `dist` folder.
 yarn test
 ```
 
-Start the `Jest` test runner.
+Starts the `Jest` test runner and performs all the test at once.
+
+```
+yarn test:watch
+```
+
+Starts the `Jest` test runner and waits for any new changes in tests.
 
 ### Prettier
 

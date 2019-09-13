@@ -82,9 +82,9 @@
     "typesafe-actions": "^4.4.2"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config ./deploy/webpack.prod.config.js",
     "csslint": "stylelint --fix ./src/**/*.scss",
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server --open --config ./deploy/webpack.dev.config.js",
     "prettier": "prettier --write \"src/**/*.{html,json,js,jsx,ts,tsx,css,scss}\"",
     "test": "jest",
     "test:watch": "jest --watch",

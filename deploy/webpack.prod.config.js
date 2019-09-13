@@ -3,27 +3,20 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const prepareAliases = require('./utils/functions').prepareAliases;
-const paths = require('./utils/paths');
+const prepareAliases = require('../utils/functions').prepareAliases;
+const paths = require('../utils/paths');
 
 const cssRegex = /\.css$/;
 const scssModuleRegex = /\.module\.scss$/;
 
 module.exports = {
-  mode: 'development',
-  devtool: 'cheap-module-inline-source-map',
-  devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    historyApiFallback: true,
-    hot: true,
-    publicPath: '/',
-  },
+  mode: 'production',
   entry: {
     bundle: './src/index.tsx',
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '..', 'dist'),
     publicPath: '/',
   },
   resolve: {

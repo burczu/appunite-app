@@ -13,6 +13,7 @@ import { IServices } from './services';
 import { IAction as IArticlesAction } from '@Model/articles/types';
 import { IAction as IFiltersAction } from '@Model/filters/types';
 import { IAction as ISourcesAction } from '@Model/sources/types';
+import { IAction as IStateAction } from '@Model/state/types';
 
 // Prepare types for router
 type IRouterAction = RouterAction | LocationChangeAction;
@@ -25,7 +26,8 @@ declare module '@Store' {
     | IArticlesAction
     | IFiltersAction
     | IRouterAction
-    | ISourcesAction;
+    | ISourcesAction
+    | IStateAction;
 
   export type IService = IServices;
 

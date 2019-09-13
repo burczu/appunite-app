@@ -4,6 +4,7 @@ import { combineEpics } from 'redux-observable';
 import * as Articles from '@Model/articles/epics';
 import * as Filters from '@Model/filters/epics';
 import * as Sources from '@Model/sources/epics';
+import * as State from '@Model/state/epics';
 
 /* @@STORE_COMPONENT@@ */
 export default combineEpics(
@@ -22,4 +23,10 @@ export default combineEpics(
   // Sources
   Sources.fetchSourcesWhenRequested,
   Sources.requestSourcesWhenLocationChangedToHome,
+
+  // State
+  State.setArticlesLoaderOnArticlesRequest,
+  State.setArticlesLoaderOnArticlesGetFinished,
+  State.setSourcesLoaderOnSourcesRequest,
+  State.setSourcesLoaderOnSourcesGetFinished,
 );

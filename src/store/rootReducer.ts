@@ -6,6 +6,7 @@ import history from './history';
 import articlesReducer from '@Model/articles/reducer';
 import filtersReducer from '@Model/filters/reducer';
 import sourcesReducer from '@Model/sources/reducer';
+import stateReducer from '@Model/state/reducer';
 
 const rootReducer = combineReducers({
   // Router
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   articles: articlesReducer,
   filters: filtersReducer,
   sources: sourcesReducer,
+  state: stateReducer,
 });
 
 export default rootReducer;

@@ -33,6 +33,16 @@ describe('Routes', () => {
       },
     },
     sources: [],
+    state: {
+      errors: {
+        articlesError: false,
+        sourcesError: false,
+      },
+      loaders: {
+        articlesLoading: false,
+        sourcesLoading: false,
+      },
+    },
   };
   const store = mockStore(initialState);
 

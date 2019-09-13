@@ -43,6 +43,16 @@ describe('getSelectedDateFormatted selector', () => {
         },
       },
       sources: [],
+      state: {
+        errors: {
+          articlesError: false,
+          sourcesError: false,
+        },
+        loaders: {
+          articlesLoading: false,
+          sourcesLoading: false,
+        },
+      },
     };
 
     return mockedState;

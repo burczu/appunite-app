@@ -27,6 +27,16 @@ describe('get (filters) selector', () => {
         },
       },
       sources: [],
+      state: {
+        errors: {
+          articlesError: false,
+          sourcesError: false,
+        },
+        loaders: {
+          articlesLoading: false,
+          sourcesLoading: false,
+        },
+      },
     };
 
     expect(get(mockedState)).toEqual(mockedFilters);

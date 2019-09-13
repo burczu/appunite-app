@@ -28,6 +28,16 @@ describe('getSelectedSortBy selector', () => {
         },
       },
       sources: [],
+      state: {
+        errors: {
+          articlesError: false,
+          sourcesError: false,
+        },
+        loaders: {
+          articlesLoading: false,
+          sourcesLoading: false,
+        },
+      },
     };
 
     expect(getSelectedSortBy(mockedState)).toEqual(expected);

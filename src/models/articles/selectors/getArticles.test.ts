@@ -43,6 +43,16 @@ describe('getArticles selector', () => {
         },
       },
       sources: [],
+      state: {
+        errors: {
+          articlesError: false,
+          sourcesError: false,
+        },
+        loaders: {
+          articlesLoading: false,
+          sourcesLoading: false,
+        },
+      },
     };
 
     expect(getArticles(mockedState)).toEqual(expectedArticles);

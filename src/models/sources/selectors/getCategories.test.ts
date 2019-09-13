@@ -58,6 +58,16 @@ describe('getCategories selector', () => {
         },
       },
       sources: mockedSources,
+      state: {
+        errors: {
+          articlesError: false,
+          sourcesError: false,
+        },
+        loaders: {
+          articlesLoading: false,
+          sourcesLoading: false,
+        },
+      },
     };
 
     expect(getCategories(mockedState)).toEqual(expectedCategories);

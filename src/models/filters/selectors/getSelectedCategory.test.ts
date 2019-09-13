@@ -27,6 +27,16 @@ describe('getSelectedCategory selector', () => {
         },
       },
       sources: [],
+      state: {
+        errors: {
+          articlesError: false,
+          sourcesError: false,
+        },
+        loaders: {
+          articlesLoading: false,
+          sourcesLoading: false,
+        },
+      },
     };
 
     expect(getSelectedCategory(mockedState)).toEqual(expected);

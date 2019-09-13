@@ -28,6 +28,16 @@ describe('getPagination selector', () => {
         },
       },
       sources: [],
+      state: {
+        errors: {
+          articlesError: false,
+          sourcesError: false,
+        },
+        loaders: {
+          articlesLoading: false,
+          sourcesLoading: false,
+        },
+      },
     };
 
     expect(getPagination(mockedState)).toEqual(expectedPagination);

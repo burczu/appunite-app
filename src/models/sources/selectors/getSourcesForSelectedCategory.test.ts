@@ -62,6 +62,16 @@ describe('getSourcesForSelectedCategory selector', () => {
         },
       },
       sources: mockedSources,
+      state: {
+        errors: {
+          articlesError: false,
+          sourcesError: false,
+        },
+        loaders: {
+          articlesLoading: false,
+          sourcesLoading: false,
+        },
+      },
     };
 
     expect(getSourcesForSelectedCategory(mockedState)).toEqual(expectedIds);

@@ -1,3 +1,6 @@
+import { ActionType } from 'typesafe-actions';
+import * as actions from './../actions';
+
 export interface IArticleSource {
   id: string | null;
   name: string;
@@ -15,4 +18,6 @@ export interface IArticle {
   title: string;
 }
 
-export type IArticleReducer = IArticle;
+export type IArticleReducer = IArticle | undefined;
+
+export type IAction = ActionType<typeof actions>;

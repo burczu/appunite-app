@@ -14,7 +14,9 @@ module.exports = {
   devtool: 'cheap-module-inline-source-map',
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
+    historyApiFallback: true,
     hot: true,
+    publicPath: '/',
   },
   entry: {
     bundle: './src/index.tsx',
@@ -22,6 +24,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],

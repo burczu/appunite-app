@@ -3,6 +3,7 @@ import React from 'react';
 import { IArticleSource } from '@Model/article/types';
 import format from 'date-fns/format';
 import { shallow } from 'enzyme';
+import md5 from 'md5';
 import { IArticleProps } from './Article';
 import Article from './Article.component';
 
@@ -79,7 +80,9 @@ describe('Articles component', () => {
   it('should render link with correct url', () => {
     const wrapper = shallow(<Article {...props} />);
 
-    expect(wrapper.find('.link').prop('to')).toEqual(`/articles/${props.url}`);
+    expect(wrapper.find('.link').prop('to')).toEqual(
+      `/articles/${md5(props.url)}`,
+    );
   });
 
   it('should not render description', () => {

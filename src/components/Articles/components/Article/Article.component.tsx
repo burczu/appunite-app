@@ -1,6 +1,7 @@
 import React from 'react';
 
 import format from 'date-fns/format';
+import md5 from 'md5';
 import { Link } from 'react-router-dom';
 import { IArticleProps } from './Article';
 import styles from './Article.module.scss';
@@ -37,7 +38,7 @@ const Article = ({
     <h2 className={styles.title}>{title}</h2>
     <section className={styles.content}>{description}</section>
     <section className={styles.links}>
-      <Link className={styles.link} to={`/articles/${url}`}>
+      <Link className={styles.link} to={`/articles/${md5(url)}`}>
         Read more
       </Link>
     </section>

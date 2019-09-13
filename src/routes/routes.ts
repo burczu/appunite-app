@@ -1,5 +1,5 @@
 const routes = {
-  articles: '/articles/:articleUrl',
+  articles: '/articles/:hash',
   index: '/',
 };
 

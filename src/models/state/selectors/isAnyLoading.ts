@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { IStateLoadersReducer } from './../types';
 import getLoaders from './getLoaders';
 
-const getCategories = createSelector<
+const isAnyLoading = createSelector<
   _Store.IState,
   IStateLoadersReducer,
   boolean
@@ -12,4 +12,4 @@ const getCategories = createSelector<
   (loaders) => loaders.articlesLoading || loaders.sourcesLoading,
 );
 
-export default getCategories;
+export default isAnyLoading;

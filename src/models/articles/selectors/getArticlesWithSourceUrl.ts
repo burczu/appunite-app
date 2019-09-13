@@ -1,8 +1,9 @@
+import { IArticle } from '@Model/article/types';
 import { get as getSources } from '@Model/sources/selectors';
 import { ISource, ISourcesReducer } from '@Model/sources/types';
 import _Store from '@Store';
 import { createSelector } from 'reselect';
-import { IArticle, IArticlesReducer } from './../types';
+import { IArticlesReducer } from './../types';
 import getArticles from './getArticles';
 
 const getArticlesWithSourceUrl = createSelector<

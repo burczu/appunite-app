@@ -1,4 +1,4 @@
-import { IArticle } from '@Model/articles/types';
+import { IArticle } from '@Model/article/types';
 
 export interface IArticlesResponse {
   status: string;

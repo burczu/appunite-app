@@ -1,3 +1,4 @@
+import { IArticle } from '@Model/article/types';
 import {
   _GET_FAILURE,
   _GET_REQUEST,
@@ -6,7 +7,7 @@ import {
   _SET_PAGINATION,
   GET_MORE,
 } from '@Model/articles/constants/actions';
-import { IArticle, IArticlesRequestPayload } from '@Model/articles/types';
+import { IArticlesRequestPayload } from '@Model/articles/types';
 import { createAsyncAction, createStandardAction } from 'typesafe-actions';
 
 export const getArticles = createAsyncAction(

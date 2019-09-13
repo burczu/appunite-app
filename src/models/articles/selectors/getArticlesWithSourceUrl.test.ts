@@ -1,8 +1,8 @@
 import rootReducer from '@/store/rootReducer';
+import { IArticle } from '@Model/article/types';
 import { IFiltersReducer } from '@Model/filters/types';
 import { ISource } from '@Model/sources/types';
 import { StateType } from 'typesafe-actions';
-import { IArticle } from './../types';
 import getArticlesWithSourceUrl from './getArticlesWithSourceUrl';
 
 describe('getArticlesWithSourceUrl selector', () => {

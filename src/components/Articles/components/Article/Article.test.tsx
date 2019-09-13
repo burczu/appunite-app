@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IArticleSource } from '@Model/articles/types';
+import { IArticleSource } from '@Model/article/types';
 import format from 'date-fns/format';
 import { shallow } from 'enzyme';
 import { IArticleProps } from './Article';

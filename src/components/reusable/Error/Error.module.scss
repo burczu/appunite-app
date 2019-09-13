@@ -1,0 +1,14 @@
+@import '@Styles/defs/colors.module.scss';
+
+.error {
+  margin: 6.5rem 4rem;
+  text-align: center;
+  width: 100%;
+}
+
+.message {
+  color: $alert_color;
+  font-size: 2rem;
+  height: 10rem;
+  width: 10rem;
+}

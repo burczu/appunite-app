@@ -95,10 +95,14 @@ describe('articles epic', () => {
     });
 
     // @ts-ignore
-    requestArticlesWhenLocationChangedToHome(action$).subscribe((action) => {
-      expect(action).toEqual(expected);
-      done();
-    });
+    requestArticlesWhenLocationChangedToHome(action$)
+      .take(2)
+      .toArray()
+      .subscribe((actions: any) => {
+        expect(actions[0]).toEqual(resetArticles());
+        expect(actions[1]).toEqual(expected);
+        done();
+      });
   });
 
   it('should request for getting articles when category filter changes', (done) => {

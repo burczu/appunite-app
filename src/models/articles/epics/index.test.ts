@@ -18,12 +18,20 @@ import endOfToday from 'date-fns/endOfToday';
 import startOfToday from 'date-fns/startOfToday';
 import { ActionsObservable, StateObservable } from 'redux-observable';
 import { of as of$, Subject, throwError } from 'rxjs';
-import { getArticles, getMore, setPagination } from './../actions';
+import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/toArray';
+import {
+  getArticles,
+  getMore,
+  resetArticles,
+  setPagination,
+} from './../actions';
 import {
   fetchArticlesWhenRequested,
   requestArticlesWhenFiltersChanged,
   requestArticlesWhenLocationChangedToHome,
   requestForArticlesOnGetMore,
+  resetStoreWhenFiltersClear,
 } from './../epics';
 
 describe('articles epic', () => {
@@ -268,5 +276,19 @@ describe('articles epic', () => {
       expect(action).toEqual(expected);
       done();
     });
+  });
+
+  it('should reset pagination and articles on clear filters', (done) => {
+    const action$ = ActionsObservable.of(clearFilters());
+
+    // @ts-ignore
+    resetStoreWhenFiltersClear(action$)
+      .take(2)
+      .toArray()
+      .subscribe((actions: any) => {
+        expect(actions[0]).toEqual(setPagination(1));
+        expect(actions[1]).toEqual(resetArticles());
+        done();
+      });
   });
 });

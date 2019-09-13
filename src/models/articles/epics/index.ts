@@ -26,6 +26,7 @@ import { isActionOf, isOfType } from 'typesafe-actions';
 import {
   getArticles as getArticlesAction,
   getMore,
+  resetArticles,
   setPagination,
 } from './../actions';
 import { getArticles, getPagination } from './../selectors';
@@ -126,6 +127,15 @@ export const requestForArticlesOnGetMore: _Store.IEpic = (action$, state$) => {
       const page = getPagination(state);
 
       return of$(setPagination(page + 1));
+    }),
+  );
+};
+
+export const resetStoreWhenFiltersClear: _Store.IEpic = (action$) => {
+  return action$.pipe(
+    filter$(isActionOf(clearFilters)),
+    mergeMap$(() => {
+      return [setPagination(1), resetArticles()];
     }),
   );
 };

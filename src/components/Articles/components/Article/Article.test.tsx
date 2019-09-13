@@ -26,6 +26,12 @@ describe('Articles component', () => {
     expect(wrapper.find('img').prop('src')).toEqual(props.urlToImage);
   });
 
+  it('should render placeholder image if no image url provided', () => {
+    const wrapper = shallow(<Article {...props} urlToImage="" />);
+
+    expect(wrapper.find('img').prop('src')).toEqual('/no-image.png');
+  });
+
   it('should render correctly formatted date', () => {
     const wrapper = shallow(<Article {...props} />);
 

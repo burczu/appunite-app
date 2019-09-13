@@ -18,7 +18,7 @@ const Article = ({
     <div className={styles.imageContainer}>
       <img
         className={styles.image}
-        src={urlToImage}
+        src={urlToImage || '/no-image.png'}
         alt={`Image attached to article titled "${title}"`}
       />
     </div>

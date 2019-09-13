@@ -2,7 +2,7 @@ import { setArticle } from '@Model/article/actions';
 import { getType } from 'typesafe-actions';
 import { IAction, IArticleReducer } from './../types';
 
-const initialState: IArticleReducer = undefined;
+const initialState: IArticleReducer = null;
 
 const articlesReducer = (
   state: IArticleReducer = initialState,

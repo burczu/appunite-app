@@ -18,6 +18,7 @@ describe('get (sources) selector', () => {
     ];
 
     const mockedState: StateType<typeof rootReducer> = {
+      article: null,
       articles: {
         articles: [],
         pagination: 1,

@@ -8,6 +8,7 @@ describe('is any loading selector', () => {
     loaders: IStateLoadersReducer,
   ): StateType<typeof rootReducer> => {
     return {
+      article: null,
       articles: {
         articles: [],
         pagination: 1,

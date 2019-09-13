@@ -28,6 +28,7 @@ describe('getArticles selector', () => {
     };
 
     const mockedState: StateType<typeof rootReducer> = {
+      article: null,
       articles: {
         articles: expectedArticles,
         pagination: 1,

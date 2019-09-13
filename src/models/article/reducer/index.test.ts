@@ -5,7 +5,7 @@ import reducer from './index';
 
 describe('articleReducer', () => {
   it('should return initial state', () => {
-    expect(reducer(undefined, {} as ActionType<any>)).toEqual(undefined);
+    expect(reducer(undefined, {} as ActionType<any>)).toEqual(null);
   });
 
   it('should handle _SET_ARTICLE', () => {

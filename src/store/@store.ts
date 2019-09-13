@@ -10,6 +10,7 @@ import { IServices } from './services';
 
 // Import model actions
 /* @@STORE_COMPONENT@@ */
+import { IAction as IArticleAction } from '@Model/article/types';
 import { IAction as IArticlesAction } from '@Model/articles/types';
 import { IAction as IFiltersAction } from '@Model/filters/types';
 import { IAction as ISourcesAction } from '@Model/sources/types';
@@ -23,6 +24,7 @@ declare module '@Store' {
 
   /* @@STORE_COMPONENT@@ */
   export type IAction =
+    | IArticleAction
     | IArticlesAction
     | IFiltersAction
     | IRouterAction

@@ -8,6 +8,7 @@ describe('is any errors selector', () => {
     errors: IStateErrorsReducer,
   ): StateType<typeof rootReducer> => {
     return {
+      article: null,
       articles: {
         articles: [],
         pagination: 1,

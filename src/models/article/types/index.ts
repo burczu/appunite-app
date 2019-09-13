@@ -18,6 +18,6 @@ export interface IArticle {
   title: string;
 }
 
-export type IArticleReducer = IArticle | undefined;
+export type IArticleReducer = IArticle | null;
 
 export type IAction = ActionType<typeof actions>;

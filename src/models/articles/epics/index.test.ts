@@ -96,11 +96,12 @@ describe('articles epic', () => {
 
     // @ts-ignore
     requestArticlesWhenLocationChangedToHome(action$)
-      .take(2)
+      .take(3)
       .toArray()
       .subscribe((actions: any) => {
-        expect(actions[0]).toEqual(resetArticles());
-        expect(actions[1]).toEqual(expected);
+        expect(actions[0]).toEqual(setPagination(1));
+        expect(actions[1]).toEqual(resetArticles());
+        expect(actions[2]).toEqual(expected);
         done();
       });
   });

@@ -39,6 +39,7 @@ export const requestArticlesWhenLocationChangedToHome: _Store.IEpic = (
     filter$((action) => action.payload.location.pathname === '/'),
     mergeMap$(() => {
       return [
+        setPagination(1),
         resetArticles(),
         getArticlesAction.request({
           dateFrom: '',

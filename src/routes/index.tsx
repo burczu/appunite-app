@@ -12,7 +12,7 @@ const Routes = () => (
   <>
     <Switch>
       <Route exact={true} path={routes.index} component={Main} />
-      <Route exact={true} path={routes.article} component={Article} />
+      <Route path={routes.articles} component={Article} />
       <Route component={NotFound} />
     </Switch>
   </>

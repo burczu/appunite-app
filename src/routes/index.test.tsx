@@ -64,7 +64,7 @@ describe('Routes', () => {
   it('should render Article page for article route', () => {
     const wrapper = mount(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/article/some-page']}>
+        <MemoryRouter initialEntries={['/articles/some-page']}>
           <Routes />
         </MemoryRouter>
       </Provider>,

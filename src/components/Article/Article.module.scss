@@ -2,14 +2,39 @@
 @import '@Styles/defs/mixins.module.scss';
 @import '@Styles/defs/props.module.scss';
 
+.container {
+  width: 100%;
+}
+
+.title {
+  font-size: 3.2rem;
+  font-weight: normal;
+  margin-bottom: 7rem;
+}
+
+.goBack {
+  background: none;
+  border: none;
+  color: $distinct_color;
+  padding: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .article {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  margin-bottom: 3rem;
+  margin-top: 2.5rem;
 }
 
 .image {
+  width: 100%;
+}
+
+.contentWrapper {
   width: 100%;
 }
 
@@ -17,56 +42,61 @@
   display: flex;
   font-size: 1.4rem;
   justify-content: space-between;
-  margin: 1.7rem 0 2rem;
+
+  margin: 2.5rem 0;
 }
 
-.title {
+.articleTitle {
   color: $full_black_color;
-  font-size: 2.4rem;
   font-weight: normal;
-  line-height: 2.7rem;
-  margin-bottom: 1.7rem;
 }
 
 .content {
-  font-size: 1.7rem;
-  line-height: 2.1rem;
-  margin-bottom: 3.2rem;
-}
-
-.links {
-  align-items: flex-end;
-  display: flex;
-  flex-grow: 1;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  margin-top: 2rem;
 }
 
 .link {
   @include buttonLink;
+  margin-top: 3rem;
 }
 
 @media screen and (min-width: $screen_tablet) {
-  .article {
-    margin-bottom: 0;
-  }
-
   .image {
     height: 100%;
     object-fit: cover;
   }
 
   .imageContainer {
-    height: 18.5rem;
+    height: 35rem;
+  }
+
+  .meta {
+    display: block;
+
+    & > span {
+      margin-right: 2.5rem;
+    }
+  }
+
+  .link {
+    width: 50%;
   }
 }
 
 @media screen and (min-width: $screen_desktop) {
   .imageContainer {
-    height: 16rem;
+    height: 45rem;
+  }
+
+  .contentWrapper {
+    width: 60rem;
   }
 }
 
 @media screen and (min-width: $screen_bigDesktop) {
   .imageContainer {
-    height: 19.5rem;
+    height: 55rem;
   }
 }

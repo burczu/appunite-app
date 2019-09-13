@@ -10,3 +10,12 @@
     width: 16rem;
   }
 }
+
+@mixin buttonLink {
+  background: $distinct_color;
+  color: $default_white;
+  display: inline-block;
+  padding: 1.7rem;
+  text-align: center;
+  width: 100%;
+}

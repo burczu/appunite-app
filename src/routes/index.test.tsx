@@ -1,6 +1,7 @@
 import React from 'react';
 
 import rootReducer from '@/store/rootReducer';
+import Article from '@Compo/pages/Article';
 import Main from '@Compo/pages/Main';
 import NotFound from '@Compo/pages/NotFound';
 import { mount } from 'enzyme';
@@ -55,7 +56,22 @@ describe('Routes', () => {
       </Provider>,
     );
 
+    expect(wrapper.find(Article)).toHaveLength(0);
     expect(wrapper.find(Main)).toHaveLength(1);
+    expect(wrapper.find(NotFound)).toHaveLength(0);
+  });
+
+  it('should render Article page for article route', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/article/some-page']}>
+          <Routes />
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    expect(wrapper.find(Article)).toHaveLength(1);
+    expect(wrapper.find(Main)).toHaveLength(0);
     expect(wrapper.find(NotFound)).toHaveLength(0);
   });
 
@@ -68,6 +84,7 @@ describe('Routes', () => {
       </Provider>,
     );
 
+    expect(wrapper.find(Article)).toHaveLength(0);
     expect(wrapper.find(Main)).toHaveLength(0);
     expect(wrapper.find(NotFound)).toHaveLength(1);
   });
